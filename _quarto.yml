@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "juliatenorio.github.io"
@@ -15,5 +16,7 @@ format:
     css: styles.css
     toc: true
 
+  
+# ~ additional metadata excluded for brevity ~
 editor: visual
 
