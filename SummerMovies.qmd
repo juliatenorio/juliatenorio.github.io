@@ -1,0 +1,8 @@
+---
+title: "Summer Movies" 
+description: |
+  Analysis of Summer Movies data from TidyTuesday
+author: Julia Aceron
+date: September 18, 2024
+format: html
+---
