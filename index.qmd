@@ -1,5 +1,22 @@
 ---
-title: "juliatenorio.github.io"
+---
+title: "Julia Aceron"
+image: media/headshot.jpeg
+toc: false
+about: 
+  template: jolla
+  image-shape: round
+  image-width: 17em
+  links:
+    - text: Handshake
+      href: https://app.joinhandshake.com/profiles/58210921
+    - text: GitHub
+      href: https://github.com/juliatenorio
+    - text: Email
+      href: jtac2021@mymail.pomona.edu
+---
+        
+# page content excluded for brevity ~---
 ---
 
 This is a Quarto website.
