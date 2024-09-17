@@ -1,9 +1,8 @@
 ---
----
 title: "Julia Aceron"
-image: media/headshot.jpeg
+image: bunny2.avif
 toc: false
-about: 
+about:
   template: jolla
   image-shape: round
   image-width: 17em
@@ -16,13 +15,8 @@ about:
       href: jtac2021@mymail.pomona.edu
 ---
         
-# page content excluded for brevity ~---
+Hello! My name is Julia Aceron, and I am a freshman at Pomona College! I intend to major either in Computer Science or Mathematics and minor in Data Science. In my free time, I love to sing, play guitar, songwrite, read, and watch movies.
+
+# page content excluded for brevity ~
+
 ---
-
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```

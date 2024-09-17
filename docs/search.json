@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "juliatenorio.github.io",
+    "title": "Julia Aceron",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "Hello! My name is Julia Aceron, and I am a freshman at Pomona College! I intend to major either in Computer Science or Mathematics and minor in Data Science. In my free time, I love to sing, play guitar, songwrite, read, and watch movies.\n\npage content excluded for brevity ~"
   },
   {
     "objectID": "about.html",
@@ -12,5 +12,19 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Julia Aceron",
+    "section": "Education",
+    "text": "Education\nJohn A. Rowland High School | Rowland Heights, CA High School Diploma | August 2020 - June 2024"
+  },
+  {
+    "objectID": "index.html#experiencce",
+    "href": "index.html#experiencce",
+    "title": "Julia Aceron",
+    "section": "Experiencce",
+    "text": "Experiencce\nKumon Math and Reading Center | Primary Instructor | March 2022 - August 2024\nPomona Academy for Youth Success | Student Advisory Board Leader | August 2022 - August 2024"
   }
 ]
