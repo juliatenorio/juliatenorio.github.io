@@ -1,9 +1,21 @@
 ---
-title: "About"
+title: "Julia Aceron"
+image: bunny2.avif
+toc: false
+about:
+  template: jolla
+  image-shape: round
+  image-width: 17em
 ---
 
-About this site
+## Education
 
-```{r}
-1 + 1
-```
+John A. Rowland High School \| Rowland Heights, CA High School Diploma \| August 2020 - June 2024
+
+Pomona College \| Claremont, CA Freshman \| Mathematics/Computer Science Major (intended) \| Data Science Minor (intended) \| August 2024 - May 2028
+
+## Experience
+
+Kumon Math and Reading Center \| Primary Instructor \| March 2022 - August 2024
+
+Pomona Academy for Youth Success \| Student Advisory Board Leader \| August 2022 - August 2024
