@@ -1,0 +1,28 @@
+---
+title: "Tidy Tuesday" 
+description: |
+  Analysis of Summer Movies data from TidyTuesday
+author: Julia Aceron
+date: September 18, 2024
+format: html
+---
+
+```{r echo = FALSE, include= FALSE}
+# Option 2: Read directly from GitHub
+
+summer_movie_genres <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-07-30/summer_movie_genres.csv')
+summer_movies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-07-30/summer_movies.csv')
+```
+
+```{r}
+library(tidyverse)
+ggplot
+
+```
+
+```{r echo = FALSE, include= FALSE}
+historical_spending <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/historical_spending.csv')
+gifts_age <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/gifts_age.csv')
+gifts_gender <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/gifts_gender.csv')
+
+```
