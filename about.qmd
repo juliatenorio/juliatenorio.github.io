@@ -1,5 +1,5 @@
 ---
-title: "Julia Aceron"
+title: "About"
 image: bunny2.avif
 toc: false
 about:

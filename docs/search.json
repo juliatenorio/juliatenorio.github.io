@@ -4,7 +4,7 @@
     "href": "Data Viz.html",
     "title": "Tidy Tuesday",
     "section": "",
-    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nggplot\n\nfunction (data = NULL, mapping = aes(), ..., environment = parent.frame()) \n{\n    UseMethod(\"ggplot\")\n}\n&lt;bytecode: 0x7f96e6ce85f8&gt;\n&lt;environment: namespace:ggplot2&gt;"
+    "text": "library(tidyverse)\nggplot(data = summer_movies) +\n  geom_point(aes(x = year, y = average_rating, color = year)) +\n  labs (\n    x = \"Years of Release\",\n    y = \"Average Rating of Movies\"\n  )\n\n\n\n\n\n\n\n  ggtitle(\"Years of Movies and their Average Rating\")\n\n$title\n[1] \"Years of Movies and their Average Rating\"\n\nattr(,\"class\")\n[1] \"labels\"\n\n\n\nlibrary(tidyverse)\nggplot(data = historical_spending) +\n  geom_line(aes(x = Year, y = PercentCelebrating, color = Year)) +\n  labs (\n    x = \"Year\",\n    y = \"Percent of People Celebrating\"\n  )\n\n\n\n\n\n\n\n  ggtitle(\"Trend of People who Celebrate Valentine's Day\") \n\n$title\n[1] \"Trend of People who Celebrate Valentine's Day\"\n\nattr(,\"class\")\n[1] \"labels\"\n\n\nTidy Tuesday Dataset Sources\nSummer Movies\nValentine’s Day Consumer Data"
   },
   {
     "objectID": "index.html",
@@ -14,24 +14,24 @@
     "text": "Hello! My name is Julia Aceron, and I am a freshman at Pomona College! I intend to major either in Computer Science or Mathematics and minor in Data Science. In my free time, I love to sing, play guitar, songwrite, read, and watch movies."
   },
   {
-    "objectID": "index.html#education",
-    "href": "index.html#education",
-    "title": "Julia Aceron",
-    "section": "Education",
-    "text": "Education\nJohn A. Rowland High School | Rowland Heights, CA High School Diploma | August 2020 - June 2024\nPomona College | Claremont, CA Freshman | Mathematics/Computer Science Major (intended) | Data Science Minor (intended) | August 2024 - May 2028"
-  },
-  {
-    "objectID": "index.html#experience",
-    "href": "index.html#experience",
-    "title": "Julia Aceron",
-    "section": "Experience",
-    "text": "Experience\nKumon Math and Reading Center | Primary Instructor | March 2022 - August 2024\nPomona Academy for Youth Success | Student Advisory Board Leader | August 2022 - August 2024"
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "John A. Rowland High School | Rowland Heights, CA High School Diploma | August 2020 - June 2024\nPomona College | Claremont, CA Freshman | Mathematics/Computer Science Major (intended) | Data Science Minor (intended) | August 2024 - May 2028"
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About",
+    "section": "",
+    "text": "John A. Rowland High School | Rowland Heights, CA High School Diploma | August 2020 - June 2024\nPomona College | Claremont, CA Freshman | Mathematics/Computer Science Major (intended) | Data Science Minor (intended) | August 2024 - May 2028"
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "About",
+    "section": "Experience",
+    "text": "Experience\nKumon Math and Reading Center | Primary Instructor | March 2022 - August 2024\nPomona Academy for Youth Success | Student Advisory Board Leader | August 2022 - August 2024"
   }
 ]
