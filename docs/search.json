@@ -2,7 +2,7 @@
   {
     "objectID": "Data Viz.html",
     "href": "Data Viz.html",
-    "title": "Tidy Tuesday",
+    "title": "Data Viz",
     "section": "",
     "text": "library(tidyverse)\nggplot(data = summer_movies) +\n  geom_point(aes(x = year, y = average_rating, color = year)) +\n  labs (\n    x = \"Years of Release\",\n    y = \"Average Rating of Movies\"\n  )\n\n\n\n\n\n\n\n  ggtitle(\"Years of Movies and their Average Rating\")\n\n$title\n[1] \"Years of Movies and their Average Rating\"\n\nattr(,\"class\")\n[1] \"labels\"\n\n\n\nlibrary(tidyverse)\nggplot(data = historical_spending) +\n  geom_line(aes(x = Year, y = PercentCelebrating, color = Year)) +\n  labs (\n    x = \"Year\",\n    y = \"Percent of People Celebrating\"\n  )\n\n\n\n\n\n\n\n  ggtitle(\"Trend of People who Celebrate Valentine's Day\") \n\n$title\n[1] \"Trend of People who Celebrate Valentine's Day\"\n\nattr(,\"class\")\n[1] \"labels\"\n\n\nTidy Tuesday Dataset Sources\nSummer Movies\nValentine’s Day Consumer Data"
   },

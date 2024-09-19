@@ -10,7 +10,7 @@ about:
     - text: Handshake
       href: https://app.joinhandshake.com/profiles/58210921
     - text: GitHub
-      href: https://github.com/juliatenorio
+      href: https://github.com/juliatenorio/juliatenorio.github.io.git
     - text: Email
       href: jtac2021@mymail.pomona.edu
 ---

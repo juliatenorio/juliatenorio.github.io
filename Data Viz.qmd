@@ -1,5 +1,5 @@
 ---
-title: "Tidy Tuesday" 
+title: "Data Viz" 
 description: |
   Analysis of Summer Movies data from TidyTuesday
 author: Julia Aceron
