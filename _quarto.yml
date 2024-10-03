@@ -9,7 +9,15 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-      - Data Viz.qmd
+    right: 
+      - text: Data Viz 
+      - menu: 
+        - text: Summer Movies Analysis
+        - SummerMovies.qmd
+        - text: Valentines Day Consumerism
+        - ValentinesDay.qmd
+        - text: Show Synopses and their Weekly Grosses 
+        - MusicalSynopses.qmd
 
 format:
   html:

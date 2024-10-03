@@ -1,0 +1,34 @@
+---
+title: "Summer Movies TidyTuesday" 
+description: |
+  Analysis of Summer Movies data 
+author: Julia Aceron
+date: September 18, 2024
+format: html
+execute:
+  warning: false
+  message: false
+---
+
+```{r echo = FALSE, include= FALSE}
+# Option 2: Read directly from GitHub
+
+summer_movie_genres <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-07-30/summer_movie_genres.csv')
+summer_movies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-07-30/summer_movies.csv')
+```
+
+```{r}
+library(tidyverse)
+ggplot(data = summer_movies) +
+  geom_point(aes(x = year, y = average_rating, color = year)) +
+  labs (
+    x = "Years of Release",
+    y = "Average Rating of Movies"
+  )
+  ggtitle("Years of Movies and their Average Rating")
+
+```
+
+Tidy Tuesday Dataset Source
+
+[Summer Movies](https://developer.imdb.com/non-commercial-datasets/)

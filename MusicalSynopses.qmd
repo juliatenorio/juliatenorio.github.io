@@ -1,0 +1,181 @@
+---
+title: "Synopsis Vs Weekly Gross" 
+description: |
+  Analysis of Musical Synopses and their Grosses
+author: Julia Aceron
+date: October 2, 2024
+format: html
+execute:
+  warning: false
+  message: false
+---
+
+![](images/clipboard-4182482908.png)
+
+### Library
+
+```{r}
+library(tidyverse)
+```
+
+### TidyTuesday Data
+
+```{r}
+grosses <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-04-28/grosses.csv', guess_max = 40000)
+synopses <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-04-28/synopses.csv')
+cpi <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-04-28/cpi.csv')
+pre_1985_starts <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-04-28/pre-1985-starts.csv')
+
+
+```
+
+### Effect of Words in a Synopsis on Weekly Gross Overall
+
+#### Word: Musical
+
+```{r}
+shows_combined <- 
+  dplyr::full_join(grosses, synopses, by = "show") 
+
+synopsis_musical_count <- shows_combined |>
+  mutate(musical_count = str_count(synopsis, "(?i)\\bmusical\\b")) |>
+  select(show, weekly_gross, synopsis, musical_count)
+
+synopsis_musical_count
+
+synopsis_musical_count |>
+  filter(!is.na(musical_count)) |>
+  select(musical_count, weekly_gross) |>
+  arrange(desc(musical_count)) |>
+  head(10000) |>
+  ggplot(aes(x = as.factor(musical_count), y = weekly_gross))+
+  geom_boxplot() +
+  labs (
+    title = "Synopsis with 'Musical' vs Weekly Gross",
+    x = "Musical Count", 
+    y = "Weekly Gross"
+  )
+```
+
+The graph above illustrates the difference between the weekly grosses depending on the amount of times the word "musical" appears in synopses. From this graph, we can determine that there is little correlation between the weekly grosses and the word "musical". In other words, it seems that it does not matter whether the word "musical" appears more in the synopsis. For example, the median weekly gross for count = 1 and count = 4 does not have a huge difference. Therefore, the number of times the word "musical" appears in the synopsis does not make a difference.
+
+#### Word: Play
+
+```{r}
+synopsis_play_count <- shows_combined |>
+  mutate(play_count = str_count(synopsis, "(?i)\\bplay\\b")) |>
+  select(show, weekly_gross, synopsis, play_count)
+
+synopsis_play_count
+
+synopsis_play_count |>
+  filter(!is.na(play_count)) |>
+  select(play_count, weekly_gross) |>
+  arrange(desc(play_count)) |>
+  head(10000) |>
+  ggplot(aes(x = as.factor(play_count), y = weekly_gross)) +
+  geom_boxplot() +
+  labs (
+    title = "Synopsis with 'Play' vs Weekly Gross",
+    x = "Play Count", 
+    y = "Weekly Gross"
+  )
+```
+The graph above is similar to the graph comparing musical count in synopses and the weekly gross. These box-plots show a similar trend in which there is little correlation between the play count and the weekly gross. 
+
+### Effect of Artistic Characters on Weekly Gross
+
+```{r}
+artist_characters <- shows_combined |>
+  mutate(synopsis_lower = str_to_lower(synopsis),
+         is_artist = str_detect(synopsis_lower, "(singer|playwright|actor|chorus|dancer)")) |>
+  select(show, weekly_gross, synopsis, is_artist)
+
+artist_characters
+
+artist_characters |>
+  filter(!is.na(is_artist)) |>
+  select(is_artist, weekly_gross) |>
+  arrange(desc(is_artist)) |>
+  head(10000) |>
+  ggplot(aes(x = is_artist, y = weekly_gross)) +
+  geom_boxplot() +
+  labs (
+    title = "Shows with Artistic Characters vs Weekly Gross",
+    x = "Has Artistic Characters?", 
+    y = "Weekly Gross"
+  )
+```
+This graph determines whether the synopsis features an artistic character and its affect on weekly gross. We can define an artistic character as a singer, playwright, actor, chorus (member), and/or dancer. It was hypothesized that it would increase weekly gross because artistic characters could appeal as more relatable to audiences. The results support this hypothesis because when the synopsis does mention an artistic character, the interquartile range is higher. 
+
+### Effect of Synopsis Length on Weekly Gross
+
+```{r}
+words_synopsis <- shows_combined |>
+  mutate(synopsis_count = str_count(synopsis, "\\S+")) |>
+  select(show, weekly_gross, synopsis, synopsis_count)
+
+words_synopsis
+
+words_synopsis |>
+  filter(!is.na(synopsis_count)) |>
+  select(synopsis_count, weekly_gross) |>
+  arrange(desc(synopsis_count)) |>
+  head(1000) |>
+  ggplot(aes(x = as.factor(synopsis_count), y = weekly_gross)) +
+  geom_boxplot() +
+  labs (
+    title = "Top Synopsis Lengths vs Weekly Gross",
+    x = "Synopsis Length", 
+    y = "Weekly Gross"
+  )
+```
+This graph demonstrates the comparison between how long the synopsis is and the weekly gross of each show. It took the top 1000 shows with the highest lengths. From the box-plots, no correlation can be seen between the length and weekly gross. 
+
+### Effect of Words in a Synopsis on Weekly Gross Overall
+
+#### Word: Musical
+
+```{r}
+shows_combined$synopsis <- as.character(shows_combined$synopsis)
+
+shows_combined$is_musical <- str_detect(shows_combined$synopsis, regex("musical", ignore_case = TRUE))
+
+shows_combined
+
+shows_combined |>
+  filter(!is.na(is_musical)) |>
+  select(weekly_gross_overall, is_musical) |>
+  ggplot(aes(x = is_musical, y = log10(weekly_gross_overall))) + 
+  geom_boxplot() +
+  scale_y_log10() +
+  labs (
+    title = "Synopsis with 'Musical' vs Weekly Gross Overall",
+    x = "Musical?", 
+    y = "Weekly Gross Overall"
+  )
+```
+These two box-plots determine whether a synopsis with the word "musical" in it or not affects the weekly gross OVERALL. This is difference from the first graph regarding musical count because it is not counting the amount of times "musical" appears, and it is compared to the weekly gross overall for all shows. This trend shows no difference since the medians are about the same. 
+
+#### Word: Play
+
+```{r}
+shows_combined$synopsis <- as.character(shows_combined$synopsis)
+
+shows_combined$is_play <- str_detect(shows_combined$synopsis, regex("play", ignore_case = TRUE))
+
+shows_combined
+
+shows_combined |>
+  filter(!is.na(is_play)) |>
+  select(weekly_gross_overall, is_play) |>
+  ggplot(aes(x = is_play, y = log10(weekly_gross_overall))) + 
+  geom_boxplot() +
+  scale_y_log10() +
+  labs (
+    title = "Synopsis with 'Play' vs Weekly Gross Overall",
+    x = "Play?", 
+    y = "Weekly Gross Overall"
+  )
+```
+This graph is similar to the previous one, except it determines whether "play" appears in the synopsis and its effect on the weekly gross overall. The trend is almost the same as the last, for it shows little difference between the two variables. 
