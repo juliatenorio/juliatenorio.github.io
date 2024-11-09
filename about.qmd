@@ -1,6 +1,6 @@
 ---
 title: "About"
-image: bunny2.avif
+image: Headshot1 copy.JPG
 toc: false
 about:
   template: jolla

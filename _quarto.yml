@@ -18,6 +18,8 @@ website:
         - ValentinesDay.qmd
         - text: Show Synopses and their Weekly Grosses 
         - MusicalSynopses.qmd
+        - text: Legalization of Marijuana Simulation 
+        - MarijuanaSimulation.qmd
 
 format:
   html:

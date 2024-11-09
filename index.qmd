@@ -1,6 +1,6 @@
 ---
 title: "Julia Aceron"
-image: bunny2.avif
+image: Headshot1 copy.JPG
 toc: false
 about:
   template: jolla

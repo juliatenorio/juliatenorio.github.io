@@ -1,0 +1,56 @@
+
+
+```{r}
+library(tidyverse)
+library(openintro)
+library(purrr)
+```
+# Simulation of those who support/oppose 
+
+## Code For Simulation
+
+#### This dataset shows the number of people who chose to oppose or support the legalization of marijuana. This simulation aims to determine if there is a difference between the proportion of supporters/opposers. The null hypothesis is that there is no difference between the proportion of people who support the legalization of marijuana and the proportion of people who oppose the legalization. The alternative hypothesis is that there is a difference between the two groups. 
+
+```{r}
+set.seed(47) 
+
+support_obs <- leg_mari |> 
+  summarize(prop_support = mean(response == "support")) |>
+  pull()
+
+random_response <- function(rep, num_people) {
+  response = sample(c("support", "oppose"), size = num_people, replace = TRUE, prob = c(0.5, 0.5))
+  return(mean(response == "support"))
+}
+
+num_sim <- 4747
+support_random <- map_dbl(1:num_sim, random_response, num_people = 47)
+
+support_random |>
+  data.frame() |> 
+  ggplot(aes(x = support_random)) +
+  geom_histogram() +
+  labs(
+    title = "Sampling Distribution When Null is True",
+    subtitle = "no inherent preference for those who oppose or support marijuana",
+    x = "Proportion of People who Support Marijuana"
+  )
+
+p_value <- sum(support_random >= support_obs)/num_sim
+  
+statistics_table <- data.frame(p_value, support_obs)
+statistics_table
+```
+
+## Process 
+
+#### First, the observed statistic for the number of people who supported the propositionw as about 0.697. Then, a simulation was conducted in which that the null hypothesis was assumed. In other words, the proportions were 0.5 for supporters and opposers to see if getting a statistic of 0.697 was by chance alone. After running this simulation many, many times and graphing the results, the sampling distribution showed the probabilties of getting different observed statistics. 
+
+## Analysis 
+
+#### From the graph, we can see that getting the observed statistic of about 0.697 results in a p-value of 0.004. Since the p-value is less than the standarized value of 0.05, we can reject the null hypothesis stating that there is no difference. We can therefore conclude that there is evidence that there is a difference between these two proportions since getting a statistic of 0.697 for those who support marijuana occurs rarely with luck. 
+
+Source: 
+This dataset was from the USA Survey, collected from July 8-11. 
+[Legalization of Marijuana Support in 2010 California Survey](https://github.com/OpenIntroStat/openintro/blob/HEAD/R/data-leg_mari.R) 
+

@@ -1,5 +1,33 @@
 [
   {
+    "objectID": "MarijuanaSimulation.html",
+    "href": "MarijuanaSimulation.html",
+    "title": "Simulation of those who support/oppose",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(openintro)\n\nLoading required package: airports\nLoading required package: cherryblossom\nLoading required package: usdata\n\nlibrary(purrr)"
+  },
+  {
+    "objectID": "MarijuanaSimulation.html#code-for-simulation",
+    "href": "MarijuanaSimulation.html#code-for-simulation",
+    "title": "Simulation of those who support/oppose",
+    "section": "Code For Simulation",
+    "text": "Code For Simulation\n\nThis dataset shows the number of people who chose to oppose or support the legalization of marijuana. This simulation aims to determine if there is a difference between the proportion of supporters/opposers. The null hypothesis is that there is no difference between the proportion of people who support the legalization of marijuana and the proportion of people who oppose the legalization. The alternative hypothesis is that there is a difference between the two groups.\n\nset.seed(47) \n\nsupport_obs &lt;- leg_mari |&gt; \n  summarize(prop_support = mean(response == \"support\")) |&gt;\n  pull()\n\nrandom_response &lt;- function(rep, num_people) {\n  response = sample(c(\"support\", \"oppose\"), size = num_people, replace = TRUE, prob = c(0.5, 0.5))\n  return(mean(response == \"support\"))\n}\n\nnum_sim &lt;- 4747\nsupport_random &lt;- map_dbl(1:num_sim, random_response, num_people = 47)\n\nsupport_random |&gt;\n  data.frame() |&gt; \n  ggplot(aes(x = support_random)) +\n  geom_histogram() +\n  labs(\n    title = \"Sampling Distribution When Null is True\",\n    subtitle = \"no inherent preference for those who oppose or support marijuana\",\n    x = \"Proportion of People who Support Marijuana\"\n  )\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\np_value &lt;- sum(support_random &gt;= support_obs)/num_sim\n  \nstatistics_table &lt;- data.frame(p_value, support_obs)\nstatistics_table\n\n      p_value support_obs\n1 0.003791869    0.697479"
+  },
+  {
+    "objectID": "MarijuanaSimulation.html#process",
+    "href": "MarijuanaSimulation.html#process",
+    "title": "Simulation of those who support/oppose",
+    "section": "Process",
+    "text": "Process\n\nFirst, the observed statistic for the number of people who supported the propositionw as about 0.697. Then, a simulation was conducted in which that the null hypothesis was assumed. In other words, the proportions were 0.5 for supporters and opposers to see if getting a statistic of 0.697 was by chance alone. After running this simulation many, many times and graphing the results, the sampling distribution showed the probabilties of getting different observed statistics."
+  },
+  {
+    "objectID": "MarijuanaSimulation.html#analysis",
+    "href": "MarijuanaSimulation.html#analysis",
+    "title": "Simulation of those who support/oppose",
+    "section": "Analysis",
+    "text": "Analysis\n\nFrom the graph, we can see that getting the observed statistic of about 0.697 results in a p-value of 0.004. Since the p-value is less than the standarized value of 0.05, we can reject the null hypothesis stating that there is no difference. We can therefore conclude that there is evidence that there is a difference between these two proportions since getting a statistic of 0.697 for those who support marijuana occurs rarely with luck.\nSource: This dataset was from the USA Survey, collected from July 8-11. Legalization of Marijuana Support in 2010 California Survey"
+  },
+  {
     "objectID": "ValentinesDay.html",
     "href": "ValentinesDay.html",
     "title": "Valentine’s Day TidyTuesday",
