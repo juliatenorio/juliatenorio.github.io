@@ -35,6 +35,20 @@
     "text": "library(tidyverse)\nggplot(data = historical_spending) +\n  geom_line(aes(x = Year, y = PercentCelebrating, color = Year)) +\n  labs (\n    x = \"Year\",\n    y = \"Percent of People Celebrating\"\n  )\n\n\n\n\n\n\n\n  ggtitle(\"Trend of People who Celebrate Valentine's Day\") \n\n$title\n[1] \"Trend of People who Celebrate Valentine's Day\"\n\nattr(,\"class\")\n[1] \"labels\"\n\n\nTidyTuesday Dataset\nValentine’s Day Consumer Data"
   },
   {
+    "objectID": "SummerMovies.html",
+    "href": "SummerMovies.html",
+    "title": "Summer Movies TidyTuesday",
+    "section": "",
+    "text": "library(tidyverse)\nggplot(data = summer_movies) +\n  geom_point(aes(x = year, y = average_rating, color = year)) +\n  labs (\n    x = \"Years of Release\",\n    y = \"Average Rating of Movies\"\n  )\n\n\n\n\n\n\n\n  ggtitle(\"Years of Movies and their Average Rating\")\n\n$title\n[1] \"Years of Movies and their Average Rating\"\n\nattr(,\"class\")\n[1] \"labels\"\n\n\nTidy Tuesday Dataset Source\nSummer Movies"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Julia Aceron",
+    "section": "",
+    "text": "Hello! My name is Julia Aceron, and I am a freshman at Pomona College! I intend to major either in Computer Science or Mathematics and minor in Data Science. In my free time, I love to sing, play guitar, songwrite, read, and watch movies."
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -56,18 +70,116 @@
     "text": "Experience\nKumon Math and Reading Center | Primary Instructor | March 2022 - August 2024\nPomona Academy for Youth Success | Student Advisory Board Leader | August 2022 - August 2024"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Julia Aceron",
+    "objectID": "WAIDatasetSQL.html",
+    "href": "WAIDatasetSQL.html",
+    "title": "Mean Absorbance by Publication Data Analysis",
     "section": "",
-    "text": "Hello! My name is Julia Aceron, and I am a freshman at Pomona College! I intend to major either in Computer Science or Mathematics and minor in Data Science. In my free time, I love to sing, play guitar, songwrite, read, and watch movies."
+    "text": "library(tidyverse)\nlibrary(dplyr)\nlibrary(DBI)"
   },
   {
-    "objectID": "SummerMovies.html",
-    "href": "SummerMovies.html",
-    "title": "Summer Movies TidyTuesday",
+    "objectID": "WAIDatasetSQL.html#plan",
+    "href": "WAIDatasetSQL.html#plan",
+    "title": "Mean Absorbance by Publication Data Analysis",
     "section": "",
-    "text": "library(tidyverse)\nggplot(data = summer_movies) +\n  geom_point(aes(x = year, y = average_rating, color = year)) +\n  labs (\n    x = \"Years of Release\",\n    y = \"Average Rating of Movies\"\n  )\n\n\n\n\n\n\n\n  ggtitle(\"Years of Movies and their Average Rating\")\n\n$title\n[1] \"Years of Movies and their Average Rating\"\n\nattr(,\"class\")\n[1] \"labels\"\n\n\nTidy Tuesday Dataset Source\nSummer Movies"
+    "text": "library(tidyverse)\nlibrary(dplyr)\nlibrary(DBI)"
+  },
+  {
+    "objectID": "WAIDatasetSQL.html#create-sql-connection",
+    "href": "WAIDatasetSQL.html#create-sql-connection",
+    "title": "Mean Absorbance by Publication Data Analysis",
+    "section": "Create SQL Connection",
+    "text": "Create SQL Connection\n\nlibrary(RMariaDB)\ncon_wai &lt;- DBI::dbConnect(\n  RMariaDB::MariaDB(), host = \"scidb.smith.edu\",\n  user = \"waiuser\", password = \"smith_waiDB\", \n  dbname = \"wai\"\n)\nMeasurements &lt;- tbl(con_wai, \"Measurements\")\nPI_Info &lt;- tbl(con_wai, \"PI_Info\")\nSubjects &lt;- tbl(con_wai, \"Subjects\")\n\n# collect(Measurements)"
+  },
+  {
+    "objectID": "WAIDatasetSQL.html#show-database-tables",
+    "href": "WAIDatasetSQL.html#show-database-tables",
+    "title": "Mean Absorbance by Publication Data Analysis",
+    "section": "Show Database Tables",
+    "text": "Show Database Tables\n\nSHOW TABLES;\n\n\n7 records\n\n\nTables_in_wai\n\n\n\n\nCodebook\n\n\nMeasurements\n\n\nMeasurements_pre2020\n\n\nPI_Info\n\n\nPI_Info_OLD\n\n\nSubjects\n\n\nSubjects_pre2020"
+  },
+  {
+    "objectID": "WAIDatasetSQL.html#describe-pi_info-table",
+    "href": "WAIDatasetSQL.html#describe-pi_info-table",
+    "title": "Mean Absorbance by Publication Data Analysis",
+    "section": "Describe PI_Info Table",
+    "text": "Describe PI_Info Table\n\nDESCRIBE PI_Info;\n\n\nDisplaying records 1 - 10\n\n\nField\nType\nNull\nKey\nDefault\nExtra\n\n\n\n\nIdentifier\nvarchar(50)\nNO\nPRI\nNA\n\n\n\nYear\nint\nNO\n\nNA\n\n\n\nAuthors\ntext\nNO\n\nNA\n\n\n\nAuthorsShortList\ntext\nNO\n\nNA\n\n\n\nTitle\ntext\nNO\n\nNA\n\n\n\nJournal\ntext\nNO\n\nNA\n\n\n\nURL\ntext\nNO\n\nNA\n\n\n\nAbstract\ntext\nNO\n\nNA\n\n\n\nDataSubmitterName\ntext\nNO\n\nNA\n\n\n\nDataSubmitterEmail\ntext\nNO\n\nNA"
+  },
+  {
+    "objectID": "WAIDatasetSQL.html#describe-subjects-table",
+    "href": "WAIDatasetSQL.html#describe-subjects-table",
+    "title": "Mean Absorbance by Publication Data Analysis",
+    "section": "Describe Subjects Table",
+    "text": "Describe Subjects Table\n\nDESCRIBE Subjects;\n\n\nDisplaying records 1 - 10\n\n\n\n\n\n\n\n\n\n\nField\nType\nNull\nKey\nDefault\nExtra\n\n\n\n\nIdentifier\nvarchar(50)\nNO\nPRI\nNA\n\n\n\nSubjectNumber\nint\nNO\nPRI\nNA\n\n\n\nSessionTotal\nint\nNO\n\nNA\n\n\n\nAgeFirstMeasurement\nfloat\nYES\n\nNA\n\n\n\nAgeCategoryFirstMeasurement\nvarchar(50)\nYES\n\nNA\n\n\n\nSex\nvarchar(50)\nNO\n\nNA\n\n\n\nRace\nvarchar(50)\nNO\n\nNA\n\n\n\nEthnicity\nvarchar(50)\nNO\n\nNA\n\n\n\nLeftEarStatusFirstMeasurement\nvarchar(50)\nNO\n\nNA\n\n\n\nRightEarStatusFirstMeasurement\nvarchar(50)\nNO\n\nNA"
+  },
+  {
+    "objectID": "WAIDatasetSQL.html#show-measurements-table",
+    "href": "WAIDatasetSQL.html#show-measurements-table",
+    "title": "Mean Absorbance by Publication Data Analysis",
+    "section": "Show Measurements Table",
+    "text": "Show Measurements Table\n\nSELECT *\nFROM Measurements\nLIMIT 0,50;\n\n\nDisplaying records 1 - 10\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIdentifier\nSubjectNumber\nSession\nEar\nInstrument\nAge\nAgeCategory\nEarStatus\nTPP\nAreaCanal\nPressureCanal\nSweepDirection\nFrequency\nAbsorbance\nZmag\nZang\n\n\n\n\nAbur_2014\n1\n1\nLeft\nHearID\n20\nAdult\nNormal\n-5\n4.42e-05\n0\nAmbient\n210.938\n0.0333379\n113780000\n-0.233504\n\n\nAbur_2014\n1\n1\nLeft\nHearID\n20\nAdult\nNormal\n-5\n4.42e-05\n0\nAmbient\n234.375\n0.0315705\n103585000\n-0.235778\n\n\nAbur_2014\n1\n1\nLeft\nHearID\n20\nAdult\nNormal\n-5\n4.42e-05\n0\nAmbient\n257.812\n0.0405751\n92951696\n-0.233482\n\n\nAbur_2014\n1\n1\nLeft\nHearID\n20\nAdult\nNormal\n-5\n4.42e-05\n0\nAmbient\n281.250\n0.0438399\n86058000\n-0.233421\n\n\nAbur_2014\n1\n1\nLeft\nHearID\n20\nAdult\nNormal\n-5\n4.42e-05\n0\nAmbient\n304.688\n0.0486400\n79492800\n-0.232931\n\n\nAbur_2014\n1\n1\nLeft\nHearID\n20\nAdult\nNormal\n-5\n4.42e-05\n0\nAmbient\n328.125\n0.0527801\n73326200\n-0.232837\n\n\nAbur_2014\n1\n1\nLeft\nHearID\n20\nAdult\nNormal\n-5\n4.42e-05\n0\nAmbient\n351.562\n0.0583192\n68793600\n-0.232115\n\n\nAbur_2014\n1\n1\nLeft\nHearID\n20\nAdult\nNormal\n-5\n4.42e-05\n0\nAmbient\n375.000\n0.0638881\n64088600\n-0.231642\n\n\nAbur_2014\n1\n1\nLeft\nHearID\n20\nAdult\nNormal\n-5\n4.42e-05\n0\nAmbient\n398.438\n0.0687025\n60200600\n-0.231356\n\n\nAbur_2014\n1\n1\nLeft\nHearID\n20\nAdult\nNormal\n-5\n4.42e-05\n0\nAmbient\n421.875\n0.0833181\n56990900\n-0.228356"
+  },
+  {
+    "objectID": "WAIDatasetSQL.html#create-table-for-the-plot",
+    "href": "WAIDatasetSQL.html#create-table-for-the-plot",
+    "title": "Mean Absorbance by Publication Data Analysis",
+    "section": "Create table for the plot",
+    "text": "Create table for the plot\n\nSELECT PI_Info.Identifier, PI_Info.AuthorsShortList, Frequency, AVG(Absorbance) AS mean_absorbance, PI_Info.Year\nFROM PI_Info\nLEFT JOIN Measurements ON PI_Info.Identifier = Measurements.Identifier\nWHERE Measurements.Identifier IN (\"Abur_2014\", \"Feeney_2017\", \"Groon_2015\", \"Lewis_2015\", \"Liu_2008\", \"Rosowski_2012\", \"Shahnaz_2006\", \"Shaver_2013\", \"Sun_2016\", \"Voss_1994\", \"Voss_2010\", \"Werner_2010\") AND Frequency &lt; 8000 AND Frequency &gt; 200\nGROUP BY Identifier, Frequency;"
+  },
+  {
+    "objectID": "WAIDatasetSQL.html#create-legend-for-the-plot",
+    "href": "WAIDatasetSQL.html#create-legend-for-the-plot",
+    "title": "Mean Absorbance by Publication Data Analysis",
+    "section": "Create legend for the plot",
+    "text": "Create legend for the plot\n\nSELECT AuthorsShortList, Year, COUNT(DISTINCT SubjectNumber, Ear) AS N, Instrument, Frequency, AVG(Absorbance) AS mean_absorbance, CONCAT(AuthorsShortList, \" (\",Year,\") \", \"N=\", COUNT(DISTINCT SubjectNumber, Ear), \"; \", Instrument) AS legend\nFROM PI_Info AS p\nLEFT JOIN Measurements AS m ON m.Identifier = p.Identifier \nWHERE p.Identifier IN (\"Abur_2014\", \"Feeney_2017\", \"Groon_2015\", \"Lewis_2015\", \"Liu_2008\", \"Rosowski_2012\", \"Shahnaz_2006\", \"Shaver_2013\", \"Sun_2016\", \"Voss_1994\", \"Voss_2010\", \"Werner_2010\") AND Frequency &lt; 8000 AND Frequency &gt; 200\nGROUP BY p.Identifier, m.Instrument, Frequency"
+  },
+  {
+    "objectID": "WAIDatasetSQL.html#plot",
+    "href": "WAIDatasetSQL.html#plot",
+    "title": "Mean Absorbance by Publication Data Analysis",
+    "section": "Plot",
+    "text": "Plot\n\nlabels |&gt; ggplot(aes(x = Frequency, y = mean_absorbance, color = legend, group = legend)) +\n  labs(\n    title = \"Mean absorbance from each publication in WAI database\",\n    x = \"Frequency (Hz)\", \n    y = \"Mean Absorbance\",\n    color = NULL\n  ) +\n  geom_line() +\n  scale_x_log10() +\n  theme_minimal() +\n  theme(\n    plot.title = element_text(face = \"bold\", size = 12),\n    legend.text = element_text(size = 5),\n    legend.background = element_rect(fill = \"white\", color = \"black\"),\n    legend.position = c(0.2,0.85),\n    legend.box.margin = margin(0, 0, 0, 0),      \n    legend.key.size = unit(0.2, \"cm\"),\n    legend.key.height = unit(0.2, \"cm\"),\n    legend.box = \"horizontal\"\n  )"
+  },
+  {
+    "objectID": "WAIDatasetSQL.html#description",
+    "href": "WAIDatasetSQL.html#description",
+    "title": "Mean Absorbance by Publication Data Analysis",
+    "section": "DESCRIPTION",
+    "text": "DESCRIPTION\n\nTo create the graph above, there were two main steps that I took. The first step was to join the tables Measurements and PI_Info by the Identifier column so that I have a new table that describes the frequencies and mean absorbances for each publication. The second step was to create the legend. I joined the same tables again so that the new table would show the author’s label, year, subject size, and corresponding instrument for each publication. As a result, I created a plot that demonstrates the mean absorbance for all of the selected publications depending on the frequencies."
+  },
+  {
+    "objectID": "WAIDatasetSQL.html#count-of-subjects-for-each-group-of-interest-in-each-publication",
+    "href": "WAIDatasetSQL.html#count-of-subjects-for-each-group-of-interest-in-each-publication",
+    "title": "Mean Absorbance by Publication Data Analysis",
+    "section": "Count # of Subjects for each group of interest in each publication",
+    "text": "Count # of Subjects for each group of interest in each publication\n\nSELECT Sex, Race, Ethnicity, Identifier,\nCOUNT(*) \nFROM Subjects \nWHERE Identifier = identifier AND Identifier IN (\"Abur_2014\", \"Feeney_2017\", \"Groon_2015\", \"Lewis_2015\", \"Liu_2008\", \"Rosowski_2012\", \"Shahnaz_2006\", \"Shaver_2013\", \"Sun_2016\", \"Voss_1994\", \"Voss_2010\", \"Werner_2010\")\nGROUP BY Sex, Race, Ethnicity, Identifier\n\n\nDisplaying records 1 - 10\n\n\nSex\nRace\nEthnicity\nIdentifier\nCOUNT(*)\n\n\n\n\nFemale\nUnknown\nUnknown\nAbur_2014\n7\n\n\nUnknown\nUnknown\nUnknown\nFeeney_2017\n33\n\n\nUnknown\nUnknown\nUnknown\nGroon_2015\n1\n\n\nFemale\nUnknown\nUnknown\nGroon_2015\n18\n\n\nMale\nUnknown\nUnknown\nGroon_2015\n2\n\n\nFemale\nCaucasian\nNonHispanic\nLewis_2015\n8\n\n\nMale\nCaucasian\nNonHispanic\nLewis_2015\n2\n\n\nMale\nBlack\nNonHispanic\nLewis_2015\n1\n\n\nFemale\nAsian\nNonHispanic\nLewis_2015\n1\n\n\nFemale\nOther\nHispanic\nLewis_2015\n1"
+  },
+  {
+    "objectID": "WAIDatasetSQL.html#get-frequency-and-mean-absorbance-for-race",
+    "href": "WAIDatasetSQL.html#get-frequency-and-mean-absorbance-for-race",
+    "title": "Mean Absorbance by Publication Data Analysis",
+    "section": "Get frequency and mean absorbance for race",
+    "text": "Get frequency and mean absorbance for race\n\nSELECT s.Identifier, s.Race, Frequency, AVG(Absorbance) AS mean_absorbance\nFROM Subjects AS s\nLEFT JOIN Measurements AS m ON m.Identifier = s.Identifier\nWHERE s.Identifier IN (\"Rosowski_2012\") AND s.Race != \"Unknown\"\nGROUP BY Identifier, Frequency, s.Race"
+  },
+  {
+    "objectID": "WAIDatasetSQL.html#get-frequency-and-mean-absorbance-for-sex",
+    "href": "WAIDatasetSQL.html#get-frequency-and-mean-absorbance-for-sex",
+    "title": "Mean Absorbance by Publication Data Analysis",
+    "section": "Get frequency and mean absorbance for sex",
+    "text": "Get frequency and mean absorbance for sex\n\nSELECT s.Identifier, s.Sex, Frequency, AVG(Absorbance) AS mean_absorbance\nFROM Subjects AS s\nLEFT JOIN Measurements AS m ON m.Identifier = s.Identifier\nWHERE s.Identifier IN (\"Rosowski_2012\")\nGROUP BY Identifier, Frequency, s.Sex"
+  },
+  {
+    "objectID": "WAIDatasetSQL.html#get-frequency-and-mean-absorbance-for-ethnicity",
+    "href": "WAIDatasetSQL.html#get-frequency-and-mean-absorbance-for-ethnicity",
+    "title": "Mean Absorbance by Publication Data Analysis",
+    "section": "Get frequency and mean absorbance for ethnicity",
+    "text": "Get frequency and mean absorbance for ethnicity\n\nSELECT s.Identifier, s.Ethnicity, Frequency, AVG(Absorbance) AS mean_absorbance\nFROM Subjects AS s\nLEFT JOIN Measurements AS m ON m.Identifier = s.Identifier\nWHERE s.Identifier IN (\"Rosowski_2012\") AND s.Ethnicity != \"Unknown\"\nGROUP BY Identifier, Frequency, s.Ethnicity"
+  },
+  {
+    "objectID": "WAIDatasetSQL.html#plots",
+    "href": "WAIDatasetSQL.html#plots",
+    "title": "Mean Absorbance by Publication Data Analysis",
+    "section": "Plots",
+    "text": "Plots\n\nplot_race |&gt; ggplot(aes(x = Frequency, y = mean_absorbance, color = Race, group = Race)) +\n  geom_line() +\n  labs(\n    title = \"Mean absorbance from Rosowski 2012 by Race\",\n    x = \"Frequency (Hz)\", \n    y = \"Mean Absorbance\", \n    color = \"Race\"\n  ) +\n  scale_x_log10() +\n  theme_minimal() \n\n\n\n\n\n\n\nplot_sex |&gt; ggplot(aes(x = Frequency, y = mean_absorbance, color = Sex, group = Sex)) +\n  geom_line() +\n  labs(\n    title = \"Mean absorbance from Rosowski 2012 by Sex\",\n    x = \"Frequency (Hz)\", \n    y = \"Mean Absorbance\", \n    color = \"Sex\"\n  ) +\n  scale_x_log10() +\n  theme_minimal() \n\n\n\n\n\n\n\nplot_ethnicity |&gt; ggplot(aes(x = Frequency, y = mean_absorbance, color = Ethnicity, group = Ethnicity)) +\n  geom_line() +\n  labs(\n    title = \"Mean absorbance from Rosowski 2012 by Ethnicity\",\n    x = \"Frequency (Hz)\", \n    y = \"Mean Absorbance\", \n    color = \"Ethnicity\"\n  ) +\n  scale_x_log10() +\n  theme_minimal() \n\n\n\n\n\n\n\n\n\ndbDisconnect(con_wai)\n\nSource: This dataset was from the WAI Database. Wideband Acoustic Immittance (WAI) Database"
   },
   {
     "objectID": "MusicalSynopses.html",

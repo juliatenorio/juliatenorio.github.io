@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Julia Aceron">
+<meta name="dcterms.date" content="2024-11-26">
+<meta name="description" content="Analysis of Mean Absorbance and Frequency">
+
+<title>Julia Aceron Portfolio - Mean Absorbance by Publication Data Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Julia Aceron Portfolio</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="dropdown-header">
+ <span class="menu-text">Data Viz</span></li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-">    
+        <li class="dropdown-header">Summer Movies Analysis</li>
+        <li>
+    <a class="dropdown-item" href="./SummerMovies.html">
+ <span class="dropdown-text">Summer Movies TidyTuesday</span></a>
+  </li>  
+        <li class="dropdown-header">Valentines Day Consumerism</li>
+        <li>
+    <a class="dropdown-item" href="./ValentinesDay.html">
+ <span class="dropdown-text">Valentine’s Day TidyTuesday</span></a>
+  </li>  
+        <li class="dropdown-header">Show Synopses and their Weekly Grosses</li>
+        <li>
+    <a class="dropdown-item" href="./MusicalSynopses.html">
+ <span class="dropdown-text">Synopsis Vs Weekly Gross</span></a>
+  </li>  
+        <li class="dropdown-header">Legalization of Marijuana Simulation</li>
+        <li>
+    <a class="dropdown-item" href="./MarijuanaSimulation.html">
+ <span class="dropdown-text">Simulation of those who support/oppose</span></a>
+  </li>  
+        <li class="dropdown-header">Mean Absorbance and Frequency from WAI Database</li>
+        <li>
+    <a class="dropdown-item" href="./WAIDatasetSQL.html">
+ <span class="dropdown-text">Mean Absorbance by Publication Data Analysis</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#plan" id="toc-plan" class="nav-link active" data-scroll-target="#plan">PLAN</a></li>
+  <li><a href="#create-sql-connection" id="toc-create-sql-connection" class="nav-link" data-scroll-target="#create-sql-connection">Create SQL Connection</a></li>
+  <li><a href="#show-database-tables" id="toc-show-database-tables" class="nav-link" data-scroll-target="#show-database-tables">Show Database Tables</a></li>
+  <li><a href="#describe-pi_info-table" id="toc-describe-pi_info-table" class="nav-link" data-scroll-target="#describe-pi_info-table">Describe PI_Info Table</a></li>
+  <li><a href="#describe-subjects-table" id="toc-describe-subjects-table" class="nav-link" data-scroll-target="#describe-subjects-table">Describe Subjects Table</a></li>
+  <li><a href="#show-measurements-table" id="toc-show-measurements-table" class="nav-link" data-scroll-target="#show-measurements-table">Show Measurements Table</a></li>
+  <li><a href="#create-table-for-the-plot" id="toc-create-table-for-the-plot" class="nav-link" data-scroll-target="#create-table-for-the-plot">Create table for the plot</a></li>
+  <li><a href="#create-legend-for-the-plot" id="toc-create-legend-for-the-plot" class="nav-link" data-scroll-target="#create-legend-for-the-plot">Create legend for the plot</a></li>
+  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot">Plot</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">DESCRIPTION</a></li>
+  <li><a href="#count-of-subjects-for-each-group-of-interest-in-each-publication" id="toc-count-of-subjects-for-each-group-of-interest-in-each-publication" class="nav-link" data-scroll-target="#count-of-subjects-for-each-group-of-interest-in-each-publication">Count # of Subjects for each group of interest in each publication</a></li>
+  <li><a href="#get-frequency-and-mean-absorbance-for-race" id="toc-get-frequency-and-mean-absorbance-for-race" class="nav-link" data-scroll-target="#get-frequency-and-mean-absorbance-for-race">Get frequency and mean absorbance for race</a></li>
+  <li><a href="#get-frequency-and-mean-absorbance-for-sex" id="toc-get-frequency-and-mean-absorbance-for-sex" class="nav-link" data-scroll-target="#get-frequency-and-mean-absorbance-for-sex">Get frequency and mean absorbance for sex</a></li>
+  <li><a href="#get-frequency-and-mean-absorbance-for-ethnicity" id="toc-get-frequency-and-mean-absorbance-for-ethnicity" class="nav-link" data-scroll-target="#get-frequency-and-mean-absorbance-for-ethnicity">Get frequency and mean absorbance for ethnicity</a></li>
+  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots">Plots</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Mean Absorbance by Publication Data Analysis</h1>
+</div>
+
+<div>
+  <div class="description">
+    <p>Analysis of Mean Absorbance and Frequency</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Julia Aceron </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 26, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="plan" class="level2">
+<h2 class="anchored" data-anchor-id="plan">PLAN</h2>
+<section id="in-this-analysis-i-plan-to-use-the-wai-database-and-explore-the-following-tables-measurements-pi_info-and-subjects.-to-correctly-analyze-mean-absorbance-and-frequency-with-each-publication-in-this-database-i-would-have-to-join-these-tables-so-that-the-information-from-the-measurements-table-is-correlated-with-the-publications-needed-in-pi_info.-the-subjects-table-will-be-used-to-create-the-legend-of-the-plot." class="level4">
+<h4 class="anchored" data-anchor-id="in-this-analysis-i-plan-to-use-the-wai-database-and-explore-the-following-tables-measurements-pi_info-and-subjects.-to-correctly-analyze-mean-absorbance-and-frequency-with-each-publication-in-this-database-i-would-have-to-join-these-tables-so-that-the-information-from-the-measurements-table-is-correlated-with-the-publications-needed-in-pi_info.-the-subjects-table-will-be-used-to-create-the-legend-of-the-plot.">In this analysis, I plan to use the WAI database and explore the following tables: Measurements, PI_Info, and Subjects. To correctly analyze mean absorbance and frequency with each publication in this database, I would have to join these tables so that the information from the Measurements table is correlated with the publications needed in PI_Info. The Subjects table will be used to create the legend of the plot.</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="create-sql-connection" class="level2">
+<h2 class="anchored" data-anchor-id="create-sql-connection">Create SQL Connection</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMariaDB)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>con_wai <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  RMariaDB<span class="sc">::</span><span class="fu">MariaDB</span>(), <span class="at">host =</span> <span class="st">"scidb.smith.edu"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">user =</span> <span class="st">"waiuser"</span>, <span class="at">password =</span> <span class="st">"smith_waiDB"</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">dbname =</span> <span class="st">"wai"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>Measurements <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con_wai, <span class="st">"Measurements"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>PI_Info <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con_wai, <span class="st">"PI_Info"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>Subjects <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con_wai, <span class="st">"Subjects"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># collect(Measurements)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="show-database-tables" class="level2">
+<h2 class="anchored" data-anchor-id="show-database-tables">Show Database Tables</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>7 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tables_in_wai</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Codebook</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Measurements</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Measurements_pre2020</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PI_Info</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PI_Info_OLD</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Subjects</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Subjects_pre2020</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="describe-pi_info-table" class="level2">
+<h2 class="anchored" data-anchor-id="describe-pi_info-table">Describe PI_Info Table</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>DESCRIBE PI_Info;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Null</th>
+<th style="text-align: left;">Key</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Extra</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Identifier</td>
+<td style="text-align: left;">varchar(50)</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;">PRI</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Year</td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Authors</td>
+<td style="text-align: left;">text</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AuthorsShortList</td>
+<td style="text-align: left;">text</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Title</td>
+<td style="text-align: left;">text</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Journal</td>
+<td style="text-align: left;">text</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">URL</td>
+<td style="text-align: left;">text</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Abstract</td>
+<td style="text-align: left;">text</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DataSubmitterName</td>
+<td style="text-align: left;">text</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">DataSubmitterEmail</td>
+<td style="text-align: left;">text</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="describe-subjects-table" class="level2">
+<h2 class="anchored" data-anchor-id="describe-subjects-table">Describe Subjects Table</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>DESCRIBE Subjects;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Displaying records 1 - 10</caption>
+<colgroup>
+<col style="width: 46%">
+<col style="width: 18%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 12%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Null</th>
+<th style="text-align: left;">Key</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Extra</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Identifier</td>
+<td style="text-align: left;">varchar(50)</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;">PRI</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SubjectNumber</td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;">PRI</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SessionTotal</td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AgeFirstMeasurement</td>
+<td style="text-align: left;">float</td>
+<td style="text-align: left;">YES</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AgeCategoryFirstMeasurement</td>
+<td style="text-align: left;">varchar(50)</td>
+<td style="text-align: left;">YES</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sex</td>
+<td style="text-align: left;">varchar(50)</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Race</td>
+<td style="text-align: left;">varchar(50)</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ethnicity</td>
+<td style="text-align: left;">varchar(50)</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LeftEarStatusFirstMeasurement</td>
+<td style="text-align: left;">varchar(50)</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RightEarStatusFirstMeasurement</td>
+<td style="text-align: left;">varchar(50)</td>
+<td style="text-align: left;">NO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="show-measurements-table" class="level2">
+<h2 class="anchored" data-anchor-id="show-measurements-table">Show Measurements Table</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Measurements</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">0</span>,<span class="dv">50</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Displaying records 1 - 10</caption>
+<colgroup>
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 5%">
+<col style="width: 3%">
+<col style="width: 6%">
+<col style="width: 2%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 2%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Identifier</th>
+<th style="text-align: right;">SubjectNumber</th>
+<th style="text-align: right;">Session</th>
+<th style="text-align: left;">Ear</th>
+<th style="text-align: left;">Instrument</th>
+<th style="text-align: right;">Age</th>
+<th style="text-align: left;">AgeCategory</th>
+<th style="text-align: left;">EarStatus</th>
+<th style="text-align: right;">TPP</th>
+<th style="text-align: right;">AreaCanal</th>
+<th style="text-align: right;">PressureCanal</th>
+<th style="text-align: left;">SweepDirection</th>
+<th style="text-align: right;">Frequency</th>
+<th style="text-align: right;">Absorbance</th>
+<th style="text-align: right;">Zmag</th>
+<th style="text-align: right;">Zang</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Abur_2014</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Left</td>
+<td style="text-align: left;">HearID</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">Adult</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">4.42e-05</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Ambient</td>
+<td style="text-align: right;">210.938</td>
+<td style="text-align: right;">0.0333379</td>
+<td style="text-align: right;">113780000</td>
+<td style="text-align: right;">-0.233504</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Abur_2014</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Left</td>
+<td style="text-align: left;">HearID</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">Adult</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">4.42e-05</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Ambient</td>
+<td style="text-align: right;">234.375</td>
+<td style="text-align: right;">0.0315705</td>
+<td style="text-align: right;">103585000</td>
+<td style="text-align: right;">-0.235778</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Abur_2014</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Left</td>
+<td style="text-align: left;">HearID</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">Adult</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">4.42e-05</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Ambient</td>
+<td style="text-align: right;">257.812</td>
+<td style="text-align: right;">0.0405751</td>
+<td style="text-align: right;">92951696</td>
+<td style="text-align: right;">-0.233482</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Abur_2014</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Left</td>
+<td style="text-align: left;">HearID</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">Adult</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">4.42e-05</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Ambient</td>
+<td style="text-align: right;">281.250</td>
+<td style="text-align: right;">0.0438399</td>
+<td style="text-align: right;">86058000</td>
+<td style="text-align: right;">-0.233421</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Abur_2014</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Left</td>
+<td style="text-align: left;">HearID</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">Adult</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">4.42e-05</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Ambient</td>
+<td style="text-align: right;">304.688</td>
+<td style="text-align: right;">0.0486400</td>
+<td style="text-align: right;">79492800</td>
+<td style="text-align: right;">-0.232931</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Abur_2014</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Left</td>
+<td style="text-align: left;">HearID</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">Adult</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">4.42e-05</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Ambient</td>
+<td style="text-align: right;">328.125</td>
+<td style="text-align: right;">0.0527801</td>
+<td style="text-align: right;">73326200</td>
+<td style="text-align: right;">-0.232837</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Abur_2014</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Left</td>
+<td style="text-align: left;">HearID</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">Adult</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">4.42e-05</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Ambient</td>
+<td style="text-align: right;">351.562</td>
+<td style="text-align: right;">0.0583192</td>
+<td style="text-align: right;">68793600</td>
+<td style="text-align: right;">-0.232115</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Abur_2014</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Left</td>
+<td style="text-align: left;">HearID</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">Adult</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">4.42e-05</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Ambient</td>
+<td style="text-align: right;">375.000</td>
+<td style="text-align: right;">0.0638881</td>
+<td style="text-align: right;">64088600</td>
+<td style="text-align: right;">-0.231642</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Abur_2014</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Left</td>
+<td style="text-align: left;">HearID</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">Adult</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">4.42e-05</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Ambient</td>
+<td style="text-align: right;">398.438</td>
+<td style="text-align: right;">0.0687025</td>
+<td style="text-align: right;">60200600</td>
+<td style="text-align: right;">-0.231356</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Abur_2014</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Left</td>
+<td style="text-align: left;">HearID</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">Adult</td>
+<td style="text-align: left;">Normal</td>
+<td style="text-align: right;">-5</td>
+<td style="text-align: right;">4.42e-05</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Ambient</td>
+<td style="text-align: right;">421.875</td>
+<td style="text-align: right;">0.0833181</td>
+<td style="text-align: right;">56990900</td>
+<td style="text-align: right;">-0.228356</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="create-table-for-the-plot" class="level2">
+<h2 class="anchored" data-anchor-id="create-table-for-the-plot">Create table for the plot</h2>
+<div class="cell" data-output.var="graph_info">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> PI_Info.<span class="kw">Identifier</span>, PI_Info.AuthorsShortList, Frequency, <span class="fu">AVG</span>(Absorbance) <span class="kw">AS</span> mean_absorbance, PI_Info.<span class="dt">Year</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> PI_Info</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> Measurements <span class="kw">ON</span> PI_Info.<span class="kw">Identifier</span> <span class="op">=</span> Measurements.<span class="kw">Identifier</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> Measurements.<span class="kw">Identifier</span> <span class="kw">IN</span> (<span class="ot">"Abur_2014"</span>, <span class="ot">"Feeney_2017"</span>, <span class="ot">"Groon_2015"</span>, <span class="ot">"Lewis_2015"</span>, <span class="ot">"Liu_2008"</span>, <span class="ot">"Rosowski_2012"</span>, <span class="ot">"Shahnaz_2006"</span>, <span class="ot">"Shaver_2013"</span>, <span class="ot">"Sun_2016"</span>, <span class="ot">"Voss_1994"</span>, <span class="ot">"Voss_2010"</span>, <span class="ot">"Werner_2010"</span>) <span class="kw">AND</span> Frequency <span class="op">&lt;</span> <span class="dv">8000</span> <span class="kw">AND</span> Frequency <span class="op">&gt;</span> <span class="dv">200</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">Identifier</span>, Frequency;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-legend-for-the-plot" class="level2">
+<h2 class="anchored" data-anchor-id="create-legend-for-the-plot">Create legend for the plot</h2>
+<div class="cell" data-output.var="labels">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> AuthorsShortList, <span class="dt">Year</span>, <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> SubjectNumber, Ear) <span class="kw">AS</span> N, Instrument, Frequency, <span class="fu">AVG</span>(Absorbance) <span class="kw">AS</span> mean_absorbance, <span class="fu">CONCAT</span>(AuthorsShortList, <span class="ot">" ("</span>,<span class="dt">Year</span>,<span class="ot">") "</span>, <span class="ot">"N="</span>, <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> SubjectNumber, Ear), <span class="ot">"; "</span>, Instrument) <span class="kw">AS</span> legend</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> PI_Info <span class="kw">AS</span> p</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> Measurements <span class="kw">AS</span> m <span class="kw">ON</span> m.<span class="kw">Identifier</span> <span class="op">=</span> p.<span class="kw">Identifier</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> p.<span class="kw">Identifier</span> <span class="kw">IN</span> (<span class="ot">"Abur_2014"</span>, <span class="ot">"Feeney_2017"</span>, <span class="ot">"Groon_2015"</span>, <span class="ot">"Lewis_2015"</span>, <span class="ot">"Liu_2008"</span>, <span class="ot">"Rosowski_2012"</span>, <span class="ot">"Shahnaz_2006"</span>, <span class="ot">"Shaver_2013"</span>, <span class="ot">"Sun_2016"</span>, <span class="ot">"Voss_1994"</span>, <span class="ot">"Voss_2010"</span>, <span class="ot">"Werner_2010"</span>) <span class="kw">AND</span> Frequency <span class="op">&lt;</span> <span class="dv">8000</span> <span class="kw">AND</span> Frequency <span class="op">&gt;</span> <span class="dv">200</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> p.<span class="kw">Identifier</span>, m.Instrument, Frequency</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plot" class="level2">
+<h2 class="anchored" data-anchor-id="plot">Plot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>labels <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Frequency, <span class="at">y =</span> mean_absorbance, <span class="at">color =</span> legend, <span class="at">group =</span> legend)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean absorbance from each publication in WAI database"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Frequency (Hz)"</span>, </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Absorbance"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="cn">NULL</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">5</span>),</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">color =</span> <span class="st">"black"</span>),</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.2</span>,<span class="fl">0.85</span>),</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.box.margin =</span> <span class="fu">margin</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),      </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.key.size =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>),</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.key.height =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>),</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.box =</span> <span class="st">"horizontal"</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="WAIDatasetSQL_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">DESCRIPTION</h2>
+<section id="to-create-the-graph-above-there-were-two-main-steps-that-i-took.-the-first-step-was-to-join-the-tables-measurements-and-pi_info-by-the-identifier-column-so-that-i-have-a-new-table-that-describes-the-frequencies-and-mean-absorbances-for-each-publication.-the-second-step-was-to-create-the-legend.-i-joined-the-same-tables-again-so-that-the-new-table-would-show-the-authors-label-year-subject-size-and-corresponding-instrument-for-each-publication.-as-a-result-i-created-a-plot-that-demonstrates-the-mean-absorbance-for-all-of-the-selected-publications-depending-on-the-frequencies." class="level4">
+<h4 class="anchored" data-anchor-id="to-create-the-graph-above-there-were-two-main-steps-that-i-took.-the-first-step-was-to-join-the-tables-measurements-and-pi_info-by-the-identifier-column-so-that-i-have-a-new-table-that-describes-the-frequencies-and-mean-absorbances-for-each-publication.-the-second-step-was-to-create-the-legend.-i-joined-the-same-tables-again-so-that-the-new-table-would-show-the-authors-label-year-subject-size-and-corresponding-instrument-for-each-publication.-as-a-result-i-created-a-plot-that-demonstrates-the-mean-absorbance-for-all-of-the-selected-publications-depending-on-the-frequencies.">To create the graph above, there were two main steps that I took. The first step was to join the tables Measurements and PI_Info by the Identifier column so that I have a new table that describes the frequencies and mean absorbances for each publication. The second step was to create the legend. I joined the same tables again so that the new table would show the author’s label, year, subject size, and corresponding instrument for each publication. As a result, I created a plot that demonstrates the mean absorbance for all of the selected publications depending on the frequencies.</h4>
+</section>
+</section>
+<section id="count-of-subjects-for-each-group-of-interest-in-each-publication" class="level2">
+<h2 class="anchored" data-anchor-id="count-of-subjects-for-each-group-of-interest-in-each-publication">Count # of Subjects for each group of interest in each publication</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> Sex, Race, Ethnicity, <span class="kw">Identifier</span>,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">COUNT</span>(<span class="op">*</span>) </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Subjects </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">Identifier</span> <span class="op">=</span> <span class="kw">identifier</span> <span class="kw">AND</span> <span class="kw">Identifier</span> <span class="kw">IN</span> (<span class="ot">"Abur_2014"</span>, <span class="ot">"Feeney_2017"</span>, <span class="ot">"Groon_2015"</span>, <span class="ot">"Lewis_2015"</span>, <span class="ot">"Liu_2008"</span>, <span class="ot">"Rosowski_2012"</span>, <span class="ot">"Shahnaz_2006"</span>, <span class="ot">"Shaver_2013"</span>, <span class="ot">"Sun_2016"</span>, <span class="ot">"Voss_1994"</span>, <span class="ot">"Voss_2010"</span>, <span class="ot">"Werner_2010"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> Sex, Race, Ethnicity, <span class="kw">Identifier</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Displaying records 1 - 10</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Sex</th>
+<th style="text-align: left;">Race</th>
+<th style="text-align: left;">Ethnicity</th>
+<th style="text-align: left;">Identifier</th>
+<th style="text-align: right;">COUNT(*)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Abur_2014</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Feeney_2017</td>
+<td style="text-align: right;">33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Groon_2015</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Groon_2015</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Groon_2015</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Caucasian</td>
+<td style="text-align: left;">NonHispanic</td>
+<td style="text-align: left;">Lewis_2015</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Caucasian</td>
+<td style="text-align: left;">NonHispanic</td>
+<td style="text-align: left;">Lewis_2015</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Male</td>
+<td style="text-align: left;">Black</td>
+<td style="text-align: left;">NonHispanic</td>
+<td style="text-align: left;">Lewis_2015</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Asian</td>
+<td style="text-align: left;">NonHispanic</td>
+<td style="text-align: left;">Lewis_2015</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Female</td>
+<td style="text-align: left;">Other</td>
+<td style="text-align: left;">Hispanic</td>
+<td style="text-align: left;">Lewis_2015</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="get-frequency-and-mean-absorbance-for-race" class="level2">
+<h2 class="anchored" data-anchor-id="get-frequency-and-mean-absorbance-for-race">Get frequency and mean absorbance for race</h2>
+<div class="cell" data-output.var="plot_race">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> s.<span class="kw">Identifier</span>, s.Race, Frequency, <span class="fu">AVG</span>(Absorbance) <span class="kw">AS</span> mean_absorbance</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Subjects <span class="kw">AS</span> s</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> Measurements <span class="kw">AS</span> m <span class="kw">ON</span> m.<span class="kw">Identifier</span> <span class="op">=</span> s.<span class="kw">Identifier</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> s.<span class="kw">Identifier</span> <span class="kw">IN</span> (<span class="ot">"Rosowski_2012"</span>) <span class="kw">AND</span> s.Race <span class="op">!=</span> <span class="ot">"Unknown"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">Identifier</span>, Frequency, s.Race</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="get-frequency-and-mean-absorbance-for-sex" class="level2">
+<h2 class="anchored" data-anchor-id="get-frequency-and-mean-absorbance-for-sex">Get frequency and mean absorbance for sex</h2>
+<div class="cell" data-output.var="plot_sex">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> s.<span class="kw">Identifier</span>, s.Sex, Frequency, <span class="fu">AVG</span>(Absorbance) <span class="kw">AS</span> mean_absorbance</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Subjects <span class="kw">AS</span> s</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> Measurements <span class="kw">AS</span> m <span class="kw">ON</span> m.<span class="kw">Identifier</span> <span class="op">=</span> s.<span class="kw">Identifier</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> s.<span class="kw">Identifier</span> <span class="kw">IN</span> (<span class="ot">"Rosowski_2012"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">Identifier</span>, Frequency, s.Sex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="get-frequency-and-mean-absorbance-for-ethnicity" class="level2">
+<h2 class="anchored" data-anchor-id="get-frequency-and-mean-absorbance-for-ethnicity">Get frequency and mean absorbance for ethnicity</h2>
+<div class="cell" data-output.var="plot_ethnicity">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> s.<span class="kw">Identifier</span>, s.Ethnicity, Frequency, <span class="fu">AVG</span>(Absorbance) <span class="kw">AS</span> mean_absorbance</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> Subjects <span class="kw">AS</span> s</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> Measurements <span class="kw">AS</span> m <span class="kw">ON</span> m.<span class="kw">Identifier</span> <span class="op">=</span> s.<span class="kw">Identifier</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> s.<span class="kw">Identifier</span> <span class="kw">IN</span> (<span class="ot">"Rosowski_2012"</span>) <span class="kw">AND</span> s.Ethnicity <span class="op">!=</span> <span class="ot">"Unknown"</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> <span class="kw">Identifier</span>, Frequency, s.Ethnicity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plots" class="level2">
+<h2 class="anchored" data-anchor-id="plots">Plots</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot_race <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Frequency, <span class="at">y =</span> mean_absorbance, <span class="at">color =</span> Race, <span class="at">group =</span> Race)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean absorbance from Rosowski 2012 by Race"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Frequency (Hz)"</span>, </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Absorbance"</span>, </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Race"</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="WAIDatasetSQL_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plot_sex <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Frequency, <span class="at">y =</span> mean_absorbance, <span class="at">color =</span> Sex, <span class="at">group =</span> Sex)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean absorbance from Rosowski 2012 by Sex"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Frequency (Hz)"</span>, </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Absorbance"</span>, </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Sex"</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="WAIDatasetSQL_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>plot_ethnicity <span class="sc">|&gt;</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Frequency, <span class="at">y =</span> mean_absorbance, <span class="at">color =</span> Ethnicity, <span class="at">group =</span> Ethnicity)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean absorbance from Rosowski 2012 by Ethnicity"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Frequency (Hz)"</span>, </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Absorbance"</span>, </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Ethnicity"</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="WAIDatasetSQL_files/figure-html/unnamed-chunk-14-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con_wai)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Source: This dataset was from the WAI Database. <a href="https://www.science.smith.edu/wai-database/">Wideband Acoustic Immittance (WAI) Database</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

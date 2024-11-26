@@ -20,6 +20,8 @@ website:
         - MusicalSynopses.qmd
         - text: Legalization of Marijuana Simulation 
         - MarijuanaSimulation.qmd
+        - text: Mean Absorbance and Frequency from WAI Database 
+        - WAIDatasetSQL.qmd
 
 format:
   html:

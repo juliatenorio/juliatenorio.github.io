@@ -1,0 +1,187 @@
+---
+title: "Mean Absorbance by Publication Data Analysis" 
+description: |
+  Analysis of Mean Absorbance and Frequency
+author: Julia Aceron
+date: November 26, 2024
+format: html
+execute:
+  warning: false
+  message: false
+---
+
+## PLAN 
+#### In this analysis, I plan to use the WAI database and explore the following tables: Measurements, PI_Info, and Subjects. To correctly analyze mean absorbance and frequency with each publication in this database, I would have to join these tables so that the information from the Measurements table is correlated with the publications needed in PI_Info. The Subjects table will be used to create the legend of the plot. 
+```{r}
+library(tidyverse)
+library(dplyr)
+library(DBI)
+```
+
+## Create SQL Connection
+```{r}
+library(RMariaDB)
+con_wai <- DBI::dbConnect(
+  RMariaDB::MariaDB(), host = "scidb.smith.edu",
+  user = "waiuser", password = "smith_waiDB", 
+  dbname = "wai"
+)
+Measurements <- tbl(con_wai, "Measurements")
+PI_Info <- tbl(con_wai, "PI_Info")
+Subjects <- tbl(con_wai, "Subjects")
+
+# collect(Measurements)
+```
+
+## Show Database Tables
+```{sql, connection=con_wai}
+SHOW TABLES;
+```
+## Describe PI_Info Table
+```{sql, connection=con_wai}
+DESCRIBE PI_Info;
+```
+## Describe Subjects Table 
+```{sql, connection=con_wai}
+DESCRIBE Subjects;
+```
+
+## Show Measurements Table
+```{sql, connection=con_wai}
+SELECT *
+FROM Measurements
+LIMIT 0,50;
+```
+## Create table for the plot
+```{sql, connection=con_wai}
+#| output.var: "graph_info" 
+
+SELECT PI_Info.Identifier, PI_Info.AuthorsShortList, Frequency, AVG(Absorbance) AS mean_absorbance, PI_Info.Year
+FROM PI_Info
+LEFT JOIN Measurements ON PI_Info.Identifier = Measurements.Identifier
+WHERE Measurements.Identifier IN ("Abur_2014", "Feeney_2017", "Groon_2015", "Lewis_2015", "Liu_2008", "Rosowski_2012", "Shahnaz_2006", "Shaver_2013", "Sun_2016", "Voss_1994", "Voss_2010", "Werner_2010") AND Frequency < 8000 AND Frequency > 200
+GROUP BY Identifier, Frequency;
+```
+## Create legend for the plot
+```{sql, connection=con_wai}
+#| output.var: "labels"
+SELECT AuthorsShortList, Year, COUNT(DISTINCT SubjectNumber, Ear) AS N, Instrument, Frequency, AVG(Absorbance) AS mean_absorbance, CONCAT(AuthorsShortList, " (",Year,") ", "N=", COUNT(DISTINCT SubjectNumber, Ear), "; ", Instrument) AS legend
+FROM PI_Info AS p
+LEFT JOIN Measurements AS m ON m.Identifier = p.Identifier 
+WHERE p.Identifier IN ("Abur_2014", "Feeney_2017", "Groon_2015", "Lewis_2015", "Liu_2008", "Rosowski_2012", "Shahnaz_2006", "Shaver_2013", "Sun_2016", "Voss_1994", "Voss_2010", "Werner_2010") AND Frequency < 8000 AND Frequency > 200
+GROUP BY p.Identifier, m.Instrument, Frequency
+
+```
+## Plot
+```{r}
+labels |> ggplot(aes(x = Frequency, y = mean_absorbance, color = legend, group = legend)) +
+  labs(
+    title = "Mean absorbance from each publication in WAI database",
+    x = "Frequency (Hz)", 
+    y = "Mean Absorbance",
+    color = NULL
+  ) +
+  geom_line() +
+  scale_x_log10() +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 12),
+    legend.text = element_text(size = 5),
+    legend.background = element_rect(fill = "white", color = "black"),
+    legend.position = c(0.2,0.85),
+    legend.box.margin = margin(0, 0, 0, 0),      
+    legend.key.size = unit(0.2, "cm"),
+    legend.key.height = unit(0.2, "cm"),
+    legend.box = "horizontal"
+  ) 
+```
+## DESCRIPTION 
+#### To create the graph above, there were two main steps that I took. The first step was to join the tables Measurements and PI_Info by the Identifier column so that I have a new table that describes the frequencies and mean absorbances for each publication. The second step was to create the legend. I joined the same tables again so that the new table would show the author's label, year, subject size, and corresponding instrument for each publication. As a result, I created a plot that demonstrates the mean absorbance for all of the selected publications depending on the frequencies. 
+
+## Count # of Subjects for each group of interest in each publication
+```{sql, connection=con_wai}
+SELECT Sex, Race, Ethnicity, Identifier,
+COUNT(*) 
+FROM Subjects 
+WHERE Identifier = identifier AND Identifier IN ("Abur_2014", "Feeney_2017", "Groon_2015", "Lewis_2015", "Liu_2008", "Rosowski_2012", "Shahnaz_2006", "Shaver_2013", "Sun_2016", "Voss_1994", "Voss_2010", "Werner_2010")
+GROUP BY Sex, Race, Ethnicity, Identifier
+```
+## Get frequency and mean absorbance for race
+```{sql, connection=con_wai}
+#| output.var: "plot_race"
+
+SELECT s.Identifier, s.Race, Frequency, AVG(Absorbance) AS mean_absorbance
+FROM Subjects AS s
+LEFT JOIN Measurements AS m ON m.Identifier = s.Identifier
+WHERE s.Identifier IN ("Rosowski_2012") AND s.Race != "Unknown"
+GROUP BY Identifier, Frequency, s.Race
+
+```
+
+## Get frequency and mean absorbance for sex
+```{sql, connection=con_wai}
+#| output.var: "plot_sex"
+
+SELECT s.Identifier, s.Sex, Frequency, AVG(Absorbance) AS mean_absorbance
+FROM Subjects AS s
+LEFT JOIN Measurements AS m ON m.Identifier = s.Identifier
+WHERE s.Identifier IN ("Rosowski_2012")
+GROUP BY Identifier, Frequency, s.Sex
+```
+
+## Get frequency and mean absorbance for ethnicity
+```{sql, connection=con_wai}
+#| output.var: "plot_ethnicity"
+
+SELECT s.Identifier, s.Ethnicity, Frequency, AVG(Absorbance) AS mean_absorbance
+FROM Subjects AS s
+LEFT JOIN Measurements AS m ON m.Identifier = s.Identifier
+WHERE s.Identifier IN ("Rosowski_2012") AND s.Ethnicity != "Unknown"
+GROUP BY Identifier, Frequency, s.Ethnicity
+```
+
+## Plots
+```{r}
+plot_race |> ggplot(aes(x = Frequency, y = mean_absorbance, color = Race, group = Race)) +
+  geom_line() +
+  labs(
+    title = "Mean absorbance from Rosowski 2012 by Race",
+    x = "Frequency (Hz)", 
+    y = "Mean Absorbance", 
+    color = "Race"
+  ) +
+  scale_x_log10() +
+  theme_minimal() 
+  
+plot_sex |> ggplot(aes(x = Frequency, y = mean_absorbance, color = Sex, group = Sex)) +
+  geom_line() +
+  labs(
+    title = "Mean absorbance from Rosowski 2012 by Sex",
+    x = "Frequency (Hz)", 
+    y = "Mean Absorbance", 
+    color = "Sex"
+  ) +
+  scale_x_log10() +
+  theme_minimal() 
+  
+plot_ethnicity |> ggplot(aes(x = Frequency, y = mean_absorbance, color = Ethnicity, group = Ethnicity)) +
+  geom_line() +
+  labs(
+    title = "Mean absorbance from Rosowski 2012 by Ethnicity",
+    x = "Frequency (Hz)", 
+    y = "Mean Absorbance", 
+    color = "Ethnicity"
+  ) +
+  scale_x_log10() +
+  theme_minimal() 
+
+```
+
+```{r}
+dbDisconnect(con_wai)
+```
+
+Source: 
+This dataset was from the WAI Database. 
+[Wideband Acoustic Immittance (WAI) Database](https://www.science.smith.edu/wai-database/) 
+
