@@ -44,8 +44,6 @@ TidyTuesday Dataset
 
 [Valentine's Day Consumer Data](https://www.kaggle.com/datasets/infinator/happy-valentines-day-2022) 
 
-<iframe width="780" height="500" src=https://juliatenorio.shinyapps.io/shinyappvalentines/
- title="Valentine's Day Interactive Graph" data-external="1"></iframe>
-
+[Shiny App](https://juliatenorio.shinyapps.io/shinyappvalentines/)
 
 
