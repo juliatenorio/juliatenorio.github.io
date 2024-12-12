@@ -186,13 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#the-following-graph-displays-data-of-summer-movies-comparing-the-relationship-between-movie-release-year-and-rating.-according-to-this-graph-throughout-the-years-there-are-continuously-more-movies-and-the-ratings-for-each-movie-become-more-varied." id="toc-the-following-graph-displays-data-of-summer-movies-comparing-the-relationship-between-movie-release-year-and-rating.-according-to-this-graph-throughout-the-years-there-are-continuously-more-movies-and-the-ratings-for-each-movie-become-more-varied." class="nav-link active" data-scroll-target="#the-following-graph-displays-data-of-summer-movies-comparing-the-relationship-between-movie-release-year-and-rating.-according-to-this-graph-throughout-the-years-there-are-continuously-more-movies-and-the-ratings-for-each-movie-become-more-varied.">The following graph displays data of summer movies comparing the relationship between movie release year and rating. According to this graph, throughout the years there are continuously more movies, and the ratings for each movie become more varied.</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -233,8 +227,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="the-following-graph-displays-data-of-summer-movies-comparing-the-relationship-between-movie-release-year-and-rating.-according-to-this-graph-throughout-the-years-there-are-continuously-more-movies-and-the-ratings-for-each-movie-become-more-varied." class="level3">
-<h3 class="anchored" data-anchor-id="the-following-graph-displays-data-of-summer-movies-comparing-the-relationship-between-movie-release-year-and-rating.-according-to-this-graph-throughout-the-years-there-are-continuously-more-movies-and-the-ratings-for-each-movie-become-more-varied.">The following graph displays data of summer movies comparing the relationship between movie release year and rating. According to this graph, throughout the years there are continuously more movies, and the ratings for each movie become more varied.</h3>
+<section id="the-following-graph-displays-data-of-summer-movies-comparing-the-relationship-between-movie-release-year-and-rating.-according-to-this-graph-throughout-the-years-there-are-continuously-more-movies-and-the-ratings-for-each-movie-become-more-varied." class="level4">
+<h4 class="anchored" data-anchor-id="the-following-graph-displays-data-of-summer-movies-comparing-the-relationship-between-movie-release-year-and-rating.-according-to-this-graph-throughout-the-years-there-are-continuously-more-movies-and-the-ratings-for-each-movie-become-more-varied.">The following graph displays data of summer movies comparing the relationship between movie release year and rating. According to this graph, throughout the years there are continuously more movies, and the ratings for each movie become more varied.</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> summer_movies) <span class="sc">+</span> <span class="co"># Uses summer_movies for ggplot</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> average_rating, <span class="at">color =</span> year)) <span class="sc">+</span> <span class="co">#Defines x and y variables and groups the colors by year</span></span>

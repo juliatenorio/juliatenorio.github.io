@@ -1,44 +1,10 @@
----
-title: "Valentine's Day TidyTuesday" 
-description: |
-  Analysis of Valentine's Day Consumerism
-author: Julia Aceron
-date: September 18, 2024
-format: html
-execute:
-  warning: false
-  message: false
----
-
-```{r echo = FALSE, include= FALSE}
-library(tidyverse)
-historical_spending <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/historical_spending.csv')
-gifts_age <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/gifts_age.csv')
-gifts_gender <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/gifts_gender.csv')
-```
-
-The following graph is from the historical spending dataset. It visualizes the percentage of people who celebrate Valentine's Day from 2010-2022
-
 ```{r}
-ggplot(historical_spending, aes(x = Year, y = PercentCelebrating, fill = Year)) + # Uses historical_spending for ggplot
-  geom_line() + # Defines x and y variables and groups color by year
-  labs (
-    x = "Year",
-    y = "Percent of People Celebrating"
-  ) + # Renames variables for clarity
-  ggtitle("Trend of People who Celebrate Valentine's Day") + # Title for Graph
-  theme_minimal() + # Creates theme for graph
-  theme(
-    plot.title = element_text(hjust = 0.5, size = 18, face = "bold"),  # Center and bold the title
-    plot.subtitle = element_text(hjust = 0.5, size = 12, face = "italic"),  # Subtitle formatting
-    axis.title = element_text(face = "bold"),  # Bold axis labels
-    axis.text = element_text(size = 12),  # Make axis text bigger
-    panel.grid.major = element_line(color = "gray", size = 0.5),  # Lighter gridlines
-    panel.grid.minor = element_blank(), # No minor gridlines
-    legend.position = "none" # No Legend
-    ) 
-
+library(tidyverse)
+library(shiny)
+historical_spending <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/historical_spending.csv')
 ```
+
+
 ```{r}
 ui <- fluidPage(
   
@@ -117,16 +83,5 @@ sliderInput(
 }
 # Run the application 
 shinyApp(ui = ui, server = server)
-
-
 ```
-
-TidyTuesday Dataset
-
-[Valentine's Day Consumer Data](https://www.kaggle.com/datasets/infinator/happy-valentines-day-2022) 
-
-Shiny App
-
-<iframe width="780" height="500" src=https://juliatenorio.shinyapps.io/shinyappvalentines/ title="Valentine's Day Interactive Graph" data-external="1"></iframe>
-
 
