@@ -19,8 +19,9 @@ library(DBI)
 library(shiny)
 ```
 
+
 ## Create SQL Connection
-```{r}
+```{r, echo = FALSE}
 library(RMariaDB)
 con_wai <- DBI::dbConnect(
   RMariaDB::MariaDB(), host = "scidb.smith.edu",
