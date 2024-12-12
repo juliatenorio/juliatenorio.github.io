@@ -40,7 +40,8 @@ support_random <- map_dbl(1:num_sim, random_response, num_people = 47)
 support_random |>
   data.frame() |> 
   ggplot(aes(x = support_random)) +
-  geom_histogram() +
+  geom_histogram(fill = "skyblue") +
+  geom_vline(xintercept = support_obs, color = "red", linetype = "dotted", size = 1) +
   labs(
     title = "Sampling Distribution When Null is True",
     subtitle = "no inherent preference for those who oppose or support marijuana",

@@ -17,7 +17,7 @@ summer_movie_genres <- readr::read_csv('https://raw.githubusercontent.com/rforda
 summer_movies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-07-30/summer_movies.csv')
 ```
 
-### The following graph displays data of summer movies comparing the relationship between movie release year and rating. According to this graph, throughout the years there are continuously more movies, and the ratings for each movie become more varied. 
+#### The following graph displays data of summer movies comparing the relationship between movie release year and rating. According to this graph, throughout the years there are continuously more movies, and the ratings for each movie become more varied. 
 
 ```{r}
 
