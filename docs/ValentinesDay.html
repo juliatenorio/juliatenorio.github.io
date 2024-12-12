@@ -160,12 +160,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="dropdown-header">Legalization of Marijuana Simulation</li>
         <li>
     <a class="dropdown-item" href="./MarijuanaSimulation.html">
- <span class="dropdown-text">Simulation of those who support/oppose</span></a>
+ <span class="dropdown-text">Marijuana Legalization Simulation</span></a>
   </li>  
         <li class="dropdown-header">Mean Absorbance and Frequency from WAI Database</li>
         <li>
     <a class="dropdown-item" href="./WAIDatasetSQL.html">
  <span class="dropdown-text">Mean Absorbance by Publication Data Analysis</span></a>
+  </li>  
+        <li class="dropdown-header">presentation</li>
+        <li>
+    <a class="dropdown-item" href="./musicalpresentation.html">
+ <span class="dropdown-text">Analysis of Broadway Show Synopses and their Effect on Weekly Grosses</span></a>
   </li>  
     </ul>
   </li>
@@ -181,7 +186,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-following-graph-is-from-the-historical-spending-dataset.-it-visualizes-the-percentage-of-people-who-celebrate-valentines-day-from-2010-2022" id="toc-the-following-graph-is-from-the-historical-spending-dataset.-it-visualizes-the-percentage-of-people-who-celebrate-valentines-day-from-2010-2022" class="nav-link active" data-scroll-target="#the-following-graph-is-from-the-historical-spending-dataset.-it-visualizes-the-percentage-of-people-who-celebrate-valentines-day-from-2010-2022">The following graph is from the historical spending dataset. It visualizes the percentage of people who celebrate Valentine’s Day from 2010-2022</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -222,14 +233,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="the-following-graph-is-from-the-historical-spending-dataset.-it-visualizes-the-percentage-of-people-who-celebrate-valentines-day-from-2010-2022" class="level3">
+<h3 class="anchored" data-anchor-id="the-following-graph-is-from-the-historical-spending-dataset.-it-visualizes-the-percentage-of-people-who-celebrate-valentines-day-from-2010-2022">The following graph is from the historical spending dataset. It visualizes the percentage of people who celebrate Valentine’s Day from 2010-2022</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> historical_spending) <span class="sc">+</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> PercentCelebrating, <span class="at">color =</span> Year)) <span class="sc">+</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span> (</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Percent of People Celebrating"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(historical_spending, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> PercentCelebrating, <span class="at">fill =</span> Year)) <span class="sc">+</span> <span class="co"># Uses historical_spending for ggplot</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="co"># Defines x and y variables and groups color by year</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span> (</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Percent of People Celebrating"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> <span class="co"># Renames variables for clarity</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Trend of People who Celebrate Valentine's Day"</span>) <span class="sc">+</span> <span class="co"># Title for Graph</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="co"># Creates theme for graph</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">18</span>, <span class="at">face =</span> <span class="st">"bold"</span>),  <span class="co"># Center and bold the title</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"italic"</span>),  <span class="co"># Subtitle formatting</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),  <span class="co"># Bold axis labels</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),  <span class="co"># Make axis text bigger</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"gray"</span>, <span class="at">size =</span> <span class="fl">0.5</span>),  <span class="co"># Lighter gridlines</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), <span class="co"># No minor gridlines</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span> <span class="co"># No Legend</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -237,19 +260,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Trend of People who Celebrate Valentine's Day"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$title
-[1] "Trend of People who Celebrate Valentine's Day"
-
-attr(,"class")
-[1] "labels"</code></pre>
-</div>
 </div>
 <p>TidyTuesday Dataset</p>
 <p><a href="https://www.kaggle.com/datasets/infinator/happy-valentines-day-2022">Valentine’s Day Consumer Data</a></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

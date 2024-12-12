@@ -1,3 +1,14 @@
+---
+title: "Marijuana Legalization Simulation" 
+description: |
+  Analysis of Proportion of People who Support/Oppose the Legalization of Marjiuana
+author: Julia Aceron
+date: November 8, 2024
+format: html
+execute:
+  warning: false
+  message: false
+---
 
 
 ```{r}
@@ -9,7 +20,7 @@ library(purrr)
 
 ## Code For Simulation
 
-#### This dataset shows the number of people who chose to oppose or support the legalization of marijuana. This simulation aims to determine if there is a difference between the proportion of supporters/opposers. The null hypothesis is that there is no difference between the proportion of people who support the legalization of marijuana and the proportion of people who oppose the legalization. The alternative hypothesis is that there is a difference between the two groups. 
+#### This dataset shows the number of people who chose to oppose or support the legalization of marijuana. This simulation aims to determine if there is a difference between the proportion of supporters/opposers. The null hypothesis is that there is no difference between the proportion of people who support the legalization of marijuana and the proportion of people who oppose the legalization (50% of people support either side). The alternative hypothesis is that there is a difference between the two groups. 
 
 ```{r}
 set.seed(47) 
@@ -44,11 +55,11 @@ statistics_table
 
 ## Process 
 
-#### First, the observed statistic for the number of people who supported the propositionw as about 0.697. Then, a simulation was conducted in which that the null hypothesis was assumed. In other words, the proportions were 0.5 for supporters and opposers to see if getting a statistic of 0.697 was by chance alone. After running this simulation many, many times and graphing the results, the sampling distribution showed the probabilties of getting different observed statistics. 
+#### First, the observed statistic for the number of people who supported the proposition as about 0.697. Then, a simulation was conducted in which that the null hypothesis was assumed. In other words, the proportions were 0.5 for supporters and opposers to see if getting a statistic of 0.697 was by chance alone. After running this simulation many, many times and graphing the results, the sampling distribution showed the probabilties of getting different observed statistics. 
 
 ## Analysis 
 
-#### From the graph, we can see that getting the observed statistic of about 0.697 results in a p-value of 0.004. Since the p-value is less than the standarized value of 0.05, we can reject the null hypothesis stating that there is no difference. We can therefore conclude that there is evidence that there is a difference between these two proportions since getting a statistic of 0.697 for those who support marijuana occurs rarely with luck. 
+#### From the graph, we can see that getting the observed statistic of about 0.697 results in a p-value of 0.004. Since the p-value is less than the standarized value of 0.05, we can reject the null hypothesis stating that 50% of the 119 survey respondents between the ages of 18 and 34 would support or oppose the legalization of marijuana. We can therefore conclude that there is evidence that there is a difference between these two proportions since getting a statistic of 0.697 for those who support marijuana occurs rarely with luck. 
 
 Source: 
 This dataset was from the USA Survey, collected from July 8-11. 

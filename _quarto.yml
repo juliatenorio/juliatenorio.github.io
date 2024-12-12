@@ -22,6 +22,10 @@ website:
         - MarijuanaSimulation.qmd
         - text: Mean Absorbance and Frequency from WAI Database 
         - WAIDatasetSQL.qmd
+        - text: presentation 
+        - musicalpresentation.qmd 
+
+    
 
 format:
   html:

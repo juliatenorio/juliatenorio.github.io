@@ -31,29 +31,40 @@ pre_1985_starts <- readr::read_csv('https://raw.githubusercontent.com/rfordatasc
 
 ### Effect of Words in a Synopsis on Weekly Gross Overall
 
-#### Word: Musical
+#### Joining the 'grosses' and 'synopses' dataset
 
 ```{r}
 shows_combined <- 
   dplyr::full_join(grosses, synopses, by = "show") 
+```
 
+#### Word: Musical
+```{r}
 synopsis_musical_count <- shows_combined |>
-  mutate(musical_count = str_count(synopsis, "(?i)\\bmusical\\b")) |>
-  select(show, weekly_gross, synopsis, musical_count)
+  mutate(musical_count = str_count(synopsis, "(?i)\\bmusical\\b")) |> # Counting the number of times 'musical' appears in the synopsis
+  select(show, weekly_gross, synopsis, musical_count) # Selecting these specific columns in the dataframe
 
-synopsis_musical_count
-
-synopsis_musical_count |>
-  filter(!is.na(musical_count)) |>
-  select(musical_count, weekly_gross) |>
-  arrange(desc(musical_count)) |>
-  head(10000) |>
-  ggplot(aes(x = as.factor(musical_count), y = weekly_gross))+
-  geom_boxplot() +
+synopsis_musical_count |> 
+  filter(!is.na(musical_count)) |> # Filtering for values that are not NA
+  mutate(weekly_gross = weekly_gross/1000) |> # Creating a new column that puts the gross in thousands 
+  select(musical_count, weekly_gross) |> # Selecting these columns
+  arrange(desc(musical_count)) |> # Arranging in descending order by musical_count
+  ggplot(aes(x = as.factor(musical_count), y = weekly_gross)) + # Defining the variables and ordering musical_count 
+  geom_boxplot(fill = "pink", color = "black", outlier.color = "lightgreen") + # Assigning colors
   labs (
-    title = "Synopsis with 'Musical' vs Weekly Gross",
-    x = "Musical Count", 
-    y = "Weekly Gross"
+    title = "Relationship Between 'Musical' Count in Synopsis and Weekly Gross",
+    subtitle = "Influence of 'Musical' keyword frequency", 
+    x = "Number of Times 'Musical' Appears in Synopsis", 
+    y = "Weekly Gross Revenue (in thousands)"
+  ) + # Renaming variables for clarity
+  theme_minimal(base_size = 14) + # Theme 
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),  # Centering and bold the title
+    plot.subtitle = element_text(hjust = 0.5, size = 12, face = "italic"),  # Subtitle formatting
+    axis.title = element_text(face = "bold"),  # Bolding axis labels
+    axis.text = element_text(size = 12),  # Making axis text bigger
+    panel.grid.major = element_line(color = "gray", size = 0.5),  # Lighter gridlines
+    panel.grid.minor = element_blank(), # No minor gridlines
   )
 ```
 
@@ -66,19 +77,27 @@ synopsis_play_count <- shows_combined |>
   mutate(play_count = str_count(synopsis, "(?i)\\bplay\\b")) |>
   select(show, weekly_gross, synopsis, play_count)
 
-synopsis_play_count
-
 synopsis_play_count |>
   filter(!is.na(play_count)) |>
+  mutate(weekly_gross = weekly_gross/1000) |>
   select(play_count, weekly_gross) |>
   arrange(desc(play_count)) |>
-  head(10000) |>
   ggplot(aes(x = as.factor(play_count), y = weekly_gross)) +
-  geom_boxplot() +
+  geom_boxplot(fill = "pink", color = "black", outlier.color = "lightgreen") +
   labs (
-    title = "Synopsis with 'Play' vs Weekly Gross",
-    x = "Play Count", 
-    y = "Weekly Gross"
+    title = "Relationship Between 'Play' Count in Synopsis and Weekly Gross",
+    subtitle = "Influence of 'Play' keyword frequency", 
+    x = "Number of Times 'Play' Appears in Synopsis", 
+    y = "Weekly Gross Revenue (in thousands)"
+  ) +
+  theme_minimal(base_size = 14) + # Theme 
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),  # Centering and bold the title
+    plot.subtitle = element_text(hjust = 0.5, size = 12, face = "italic"),  # Subtitle formatting
+    axis.title = element_text(face = "bold"),  # Bolding axis labels
+    axis.text = element_text(size = 12),  # Making axis text bigger
+    panel.grid.major = element_line(color = "gray", size = 0.5),  # Lighter gridlines
+    panel.grid.minor = element_blank(), # No minor gridlines
   )
 ```
 The graph above is similar to the graph comparing musical count in synopses and the weekly gross. These box-plots show a similar trend in which there is little correlation between the play count and the weekly gross. 
@@ -91,19 +110,28 @@ artist_characters <- shows_combined |>
          is_artist = str_detect(synopsis_lower, "(singer|playwright|actor|chorus|dancer)")) |>
   select(show, weekly_gross, synopsis, is_artist)
 
-artist_characters
 
 artist_characters |>
   filter(!is.na(is_artist)) |>
+  mutate(weekly_gross = weekly_gross/1000) |>
   select(is_artist, weekly_gross) |>
   arrange(desc(is_artist)) |>
-  head(10000) |>
   ggplot(aes(x = is_artist, y = weekly_gross)) +
-  geom_boxplot() +
+  geom_boxplot(fill = "pink", color = "black", outlier.color = "lightgreen") +
   labs (
     title = "Shows with Artistic Characters vs Weekly Gross",
-    x = "Has Artistic Characters?", 
-    y = "Weekly Gross"
+    subtitle = "Impact of Artistic Themes on Revenue",
+    x = "Contains Artistic Characters", 
+    y = "Weekly Gross Revenue"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),  # Centering and bold the title
+    plot.subtitle = element_text(hjust = 0.5, size = 12, face = "italic"),  # Subtitle formatting
+    axis.title = element_text(face = "bold"),  # Bolding axis labels
+    axis.text = element_text(size = 12),  # Making axis text bigger
+    panel.grid.major = element_line(color = "gray", size = 0.5),  # Lighter gridlines
+    panel.grid.minor = element_blank(), # No minor gridlines
   )
 ```
 This graph determines whether the synopsis features an artistic character and its affect on weekly gross. We can define an artistic character as a singer, playwright, actor, chorus (member), and/or dancer. It was hypothesized that it would increase weekly gross because artistic characters could appeal as more relatable to audiences. The results support this hypothesis because when the synopsis does mention an artistic character, the interquartile range is higher. 
@@ -115,19 +143,28 @@ words_synopsis <- shows_combined |>
   mutate(synopsis_count = str_count(synopsis, "\\S+")) |>
   select(show, weekly_gross, synopsis, synopsis_count)
 
-words_synopsis
-
 words_synopsis |>
   filter(!is.na(synopsis_count)) |>
+  mutate(weekly_gross = weekly_gross/1000) |>
   select(synopsis_count, weekly_gross) |>
   arrange(desc(synopsis_count)) |>
   head(1000) |>
   ggplot(aes(x = as.factor(synopsis_count), y = weekly_gross)) +
-  geom_boxplot() +
+  geom_boxplot(fill = "pink", color = "black", outlier.color = "lightgreen") +
+  geom_jitter() +
   labs (
     title = "Top Synopsis Lengths vs Weekly Gross",
     x = "Synopsis Length", 
     y = "Weekly Gross"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),  # Centering and bold the title
+    plot.subtitle = element_text(hjust = 0.5, size = 12, face = "italic"),  # Subtitle formatting
+    axis.title = element_text(face = "bold"),  # Bolding axis labels
+    axis.text = element_text(size = 12),  # Making axis text bigger
+    panel.grid.major = element_line(color = "gray", size = 0.5),  # Lighter gridlines
+    panel.grid.minor = element_blank(), # No minor gridlines
   )
 ```
 This graph demonstrates the comparison between how long the synopsis is and the weekly gross of each show. It took the top 1000 shows with the highest lengths. From the box-plots, no correlation can be seen between the length and weekly gross. 
@@ -141,18 +178,26 @@ shows_combined$synopsis <- as.character(shows_combined$synopsis)
 
 shows_combined$is_musical <- str_detect(shows_combined$synopsis, regex("musical", ignore_case = TRUE))
 
-shows_combined
-
 shows_combined |>
   filter(!is.na(is_musical)) |>
+  mutate(weekly_gross = weekly_gross/1000) |>
   select(weekly_gross_overall, is_musical) |>
   ggplot(aes(x = is_musical, y = log10(weekly_gross_overall))) + 
-  geom_boxplot() +
+  geom_boxplot(fill = "pink", color = "black", outlier.color = "lightgreen") +
   scale_y_log10() +
   labs (
     title = "Synopsis with 'Musical' vs Weekly Gross Overall",
     x = "Musical?", 
     y = "Weekly Gross Overall"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),  # Centering and bold the title
+    plot.subtitle = element_text(hjust = 0.5, size = 12, face = "italic"),  # Subtitle formatting
+    axis.title = element_text(face = "bold"),  # Bolding axis labels
+    axis.text = element_text(size = 12),  # Making axis text bigger
+    panel.grid.major = element_line(color = "gray", size = 0.5),  # Lighter gridlines
+    panel.grid.minor = element_blank(), # No minor gridlines
   )
 ```
 These two box-plots determine whether a synopsis with the word "musical" in it or not affects the weekly gross OVERALL. This is difference from the first graph regarding musical count because it is not counting the amount of times "musical" appears, and it is compared to the weekly gross overall for all shows. This trend shows no difference since the medians are about the same. 
@@ -179,3 +224,8 @@ shows_combined |>
   )
 ```
 This graph is similar to the previous one, except it determines whether "play" appears in the synopsis and its effect on the weekly gross overall. The trend is almost the same as the last, for it shows little difference between the two variables. 
+
+TidyTuesday Dataset
+
+[Broadway Weekly Grosses from Playbill. Includes data on revenue and attendance figures for theatres that are a part of The Broadway League.](https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-04-28/readme.md) 
+

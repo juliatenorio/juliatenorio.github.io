@@ -12,20 +12,31 @@ execute:
 
 ```{r echo = FALSE, include= FALSE}
 # Option 2: Read directly from GitHub
-
+library(tidyverse)
 summer_movie_genres <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-07-30/summer_movie_genres.csv')
 summer_movies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-07-30/summer_movies.csv')
 ```
 
+### The following graph displays data of summer movies comparing the relationship between movie release year and rating. According to this graph, throughout the years there are continuously more movies, and the ratings for each movie become more varied. 
+
 ```{r}
-library(tidyverse)
-ggplot(data = summer_movies) +
-  geom_point(aes(x = year, y = average_rating, color = year)) +
+
+ggplot(data = summer_movies) + # Uses summer_movies for ggplot
+  geom_point(aes(x = year, y = average_rating, color = year)) + #Defines x and y variables and groups the colors by year
   labs (
-    x = "Years of Release",
-    y = "Average Rating of Movies"
-  )
-  ggtitle("Years of Movies and their Average Rating")
+    x = "Years of Release", 
+    y = "Average Rating",
+    subtitle = "A scatter plot showing the relationship between movie release year and rating"
+  ) + # Renames all the variables and adds a subtitle 
+  ggtitle("Years of Movies and their Average Rating") + # Title for graph
+  theme_minimal() + # Creates theme for graph
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 18, face = "bold"),  # Center and bold the title
+    plot.subtitle = element_text(hjust = 0.5, size = 12, face = "italic"),  # Subtitle formatting
+    axis.title = element_text(face = "bold"),  # Bold axis labels
+    axis.text = element_text(size = 12),  # Make axis text bigger
+    panel.grid.major = element_line(color = "gray", size = 0.5),  # Lighter gridlines
+    panel.grid.minor = element_blank())  # No minor gridlines
 
 ```
 

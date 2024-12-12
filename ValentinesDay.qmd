@@ -11,21 +11,35 @@ execute:
 ---
 
 ```{r echo = FALSE, include= FALSE}
+library(tidyverse)
 historical_spending <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/historical_spending.csv')
 gifts_age <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/gifts_age.csv')
 gifts_gender <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-02-13/gifts_gender.csv')
 ```
 
+### The following graph is from the historical spending dataset. It visualizes the percentage of people who celebrate Valentine's Day from 2010-2022
+
 ```{r}
-library(tidyverse)
-ggplot(data = historical_spending) +
-  geom_line(aes(x = Year, y = PercentCelebrating, color = Year)) +
+ggplot(historical_spending, aes(x = Year, y = PercentCelebrating, fill = Year)) + # Uses historical_spending for ggplot
+  geom_line() + # Defines x and y variables and groups color by year
   labs (
     x = "Year",
     y = "Percent of People Celebrating"
-  )
-  ggtitle("Trend of People who Celebrate Valentine's Day") 
+  ) + # Renames variables for clarity
+  ggtitle("Trend of People who Celebrate Valentine's Day") + # Title for Graph
+  theme_minimal() + # Creates theme for graph
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 18, face = "bold"),  # Center and bold the title
+    plot.subtitle = element_text(hjust = 0.5, size = 12, face = "italic"),  # Subtitle formatting
+    axis.title = element_text(face = "bold"),  # Bold axis labels
+    axis.text = element_text(size = 12),  # Make axis text bigger
+    panel.grid.major = element_line(color = "gray", size = 0.5),  # Lighter gridlines
+    panel.grid.minor = element_blank(), # No minor gridlines
+    legend.position = "none" # No Legend
+    ) 
+
 ```
+
 
 TidyTuesday Dataset
 
