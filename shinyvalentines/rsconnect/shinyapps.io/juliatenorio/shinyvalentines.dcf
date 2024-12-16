@@ -1,0 +1,12 @@
+name: shinyvalentines
+title: shinyvalentines
+username: juliatenorio
+account: juliatenorio
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13583398
+bundleId: 9517496
+url: https://juliatenorio.shinyapps.io/shinyvalentines/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
